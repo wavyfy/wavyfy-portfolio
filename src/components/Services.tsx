@@ -11,7 +11,7 @@ const services = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        strokeWidth={1.5}
+        strokeWidth={2}
       >
         <path
           strokeLinecap="round"
@@ -23,7 +23,8 @@ const services = [
     title: "Web Design & UX/UI",
     description:
       "Crafting sleek, user-focused interfaces in Figma that drive engagement and conversions.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
   },
   {
     icon: (
@@ -32,7 +33,7 @@ const services = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        strokeWidth={1.5}
+        strokeWidth={2}
       >
         <path
           strokeLinecap="round"
@@ -44,7 +45,8 @@ const services = [
     title: "No-code Development",
     description:
       "Building powerful, scalable websites without writing a single line of code using modern no-code platforms.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
   },
   {
     icon: (
@@ -53,7 +55,7 @@ const services = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        strokeWidth={1.5}
+        strokeWidth={2}
       >
         <path
           strokeLinecap="round"
@@ -65,7 +67,8 @@ const services = [
     title: "MVP prototyping",
     description:
       "Rapidly turning your ideas into clickable, testable prototypes to validate concepts before full development.",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80",
   },
   {
     icon: (
@@ -74,7 +77,7 @@ const services = [
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        strokeWidth={1.5}
+        strokeWidth={2}
       >
         <path
           strokeLinecap="round"
@@ -86,7 +89,8 @@ const services = [
     title: "Ongoing Design  Partner",
     description:
       "A dedicated design partnership for continuous iteration, updates, and growth alongside your business.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
   },
 ];
 
@@ -94,7 +98,7 @@ export default function Services() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-[#f5f5f5]  sm:px-4 py-20 md:py-28">
+    <section className="bg-[#f5f5f5]  sm:px-4 py-20 md:py-28 md:px-10">
       <div className="max-w-8xl mx-auto">
         {/* Top row: label + heading + CTA */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12">
@@ -103,24 +107,25 @@ export default function Services() {
             {/* Section label */}
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-md font-medium text-gray-700">
                 Services
               </span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl md:text-[2.6rem] font-semibold leading-[1.2] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
               <span className="text-gray-900">From idea to scale.</span>
               <br />
-              <span className="text-gray-400">We master our craft.</span>
+              <span className="text-gray-500">We master our craft.</span>
             </h2>
           </div>
 
           {/* Right: CTA */}
-          <button className="flex items-center gap-3 self-start md:self-center border border-gray-300 bg-white text-gray-800 text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-50 transition-colors mt-2 md:mt-6">
-            Start A Project
-            <span className="flex items-center justify-center w-7 h-7 border border-gray-300 rounded-full">
-              <ArrowRight className="w-3.5 h-3.5" />
+          <button className="hidden md:flex items-center gap-3 bg-[#F3F4F6] text-gray-800 text-md font-medium pl-4 pr-2 py-3 mt-20 rounded-full border shadow-xl shadow-black/30 border-gray-200 transition-all">
+            <span>Start A Project</span>
+
+            <span className="flex items-center justify-center w-12 h-8 rounded-full bg-[#F3F4F6] border border-gray-200">
+              <ArrowRight className="w-4 h-4 text-gray-800" />
             </span>
           </button>
         </div>
@@ -134,8 +139,8 @@ export default function Services() {
               return (
                 <div
                   key={index}
-                  className={`bg-white rounded-2xl border border-gray-100 transition-all duration-300 ${
-                    isOpen ? "shadow-sm" : ""
+                  className={`bg-white rounded-t-4xl rounded-b-4xl border border-gray-200 transition-all duration-500 ${
+                    isOpen ? "" : ""
                   }`}
                 >
                   <button
@@ -143,20 +148,20 @@ export default function Services() {
                     className="w-full flex items-center gap-4 px-5 py-4 text-left"
                   >
                     {/* Icon */}
-                    <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex-shrink-0">
+                    <span className="flex items-center justify-center w-15 h-10 rounded-4xl bg-gray-100 border border-gray-300 shrink-0">
                       {service.icon}
                     </span>
 
                     {/* Title */}
-                    <span className="flex-1 text-base font-semibold text-gray-900 text-xl">
+                    <span className="flex-1 font-semibold text-gray-900 text-xl">
                       {service.title}
                     </span>
 
                     {/* Chevron */}
                     {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                      <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />
                     )}
                   </button>
 
@@ -166,7 +171,7 @@ export default function Services() {
                       isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="px-5 pb-5 pl-[4.5rem] text-sm text-gray-500 leading-relaxed">
+                    <p className=" pb-5 px-10 text-md text-gray-700 leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -176,25 +181,31 @@ export default function Services() {
           </div>
 
           {/* Right: Image — switches per accordion */}
-          <div className="relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px]">
-            {services.map((service, index) => (
-              <img
-                key={index}
-                src={service.image}
-                alt={service.title}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-                  openIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
-              />
-            ))}
-            {/* Fallback when none selected */}
-            {openIndex === -1 && (
-              <img
-                src={services[0].image}
-                alt={services[0].title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            )}
+          <div className="relative rounded-[28px] p-2 bg-white/80 border border-gray-200 shadow-xl">
+            <div className="relative rounded-[24px] overflow-hidden aspect-4/3 lg:aspect-auto lg:h-full lg:min-h-[600px] bg-black">
+              {services.map((service, index) => (
+                <img
+                  key={index}
+                  src={service.image}
+                  alt={service.title}
+                  className={`absolute inset-0 w-full h-full object-cover
+        transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]
+        ${
+          openIndex === index
+            ? "opacity-100 scale-100 z-10"
+            : "opacity-0 scale-110 z-0"
+        }`}
+                />
+              ))}
+
+              {openIndex === -1 && (
+                <img
+                  src={services[0].image}
+                  alt={services[0].title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
