@@ -1,93 +1,114 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
-    name: "Atlas Technologies",
+    name: "Vanguard OS",
     tags: ["UX Design", "Web Design"],
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+      "https://framerusercontent.com/images/xktGFEeTfvx5MDldvQxlaw79M.png?width=800&height=1200",
   },
   {
-    name: "Finlytics",
+    name: "Quantum Finance",
     tags: ["UI Design", "Branding"],
     image:
-      "https://images.unsplash.com/photo-1621947081720-86970823b77a?w=800&q=80",
+      "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png?scale-down-to=2048&width=2400&height=1600",
   },
   {
-    name: "Orbital Bank",
-    tags: ["Fintech", "UX Design", "Web Design"],
+    name: "Nexus Core",
+    tags: ["Fintech", "UX Design"],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png?scale-down-to=2048&width=2400&height=1600",
   },
   {
-    name: "Echo Analytics",
+    name: "Pulse Data Network",
     tags: ["UI Design", "Motion Design"],
     image:
-      "https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=800&q=80",
+      "https://framerusercontent.com/images/TwCiV5MUt16Q38ftZYKlEhNhbJI.png?scale-down-to=2048&width=1984&height=2400",
   },
 ];
 
 export default function Projects() {
   return (
-    <section className="bg-[#f5f5f5] sm:px-4 py-20 md:py-28 md:px-7">
+    <section className="sm:px-4 py-20 md:py-8 md:px-7">
       <div className="max-w-8xl mx-auto">
         {/* Section Header — Centered */}
         <div className="text-center mb-14">
           {/* Label */}
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-            <span className="text-md font-medium text-gray-700">Projects</span>
+            <span className="text-md font-medium text-gray-700">
+              Infrastructure
+            </span>
           </div>
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-[2.6rem] font-semibold leading-[1.2] tracking-tight">
-            <span className="text-gray-900">Here&apos;s what</span>
+            <span className="text-gray-900">Work we&apos;ve</span>
             <br />
-            <span className="text-gray-500">the momentum looks like.</span>
+            <span className="text-gray-500">successfully deployed.</span>
           </h2>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-[65px] pt-6  pb-4 px-3 bg-white ">
-          {projects.map((project, index) => (
-            <div key={index} className="p-5 flex flex-col">
-              {/* Top row: Title + View button */}
-              <div className="flex items-center justify-between mb-5 pr-3">
-                <h3 className="text-2xl font-medium text-gray-900 px-3">
-                  {project.name}
-                </h3>
-                <button className="flex items-center gap-2 text-lg font-medium text-gray-700 hover:text-gray-900 transition-colors">
-                  View
-                  <span className="flex items-center justify-center w-10 h-7 border border-gray-300 rounded-full bg-gray-100">
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </button>
-              </div>
+        {/* Project Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 border border-gray-200 rounded-[40px] pt-6 pb-4 px-3 bg-white">
+          {projects.map((project, index) => {
+            const spanClass =
+              index === 0
+                ? "lg:col-span-2"
+                : index === 1
+                  ? "lg:col-span-3"
+                  : index === 2
+                    ? "lg:col-span-3"
+                    : "lg:col-span-2";
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4 px-2">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="text-sm font-medium text-gray-700 bg-gray-100 border border-gray-200 px-3 py-1 rounded-full "
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            return (
+              <div
+                key={index}
+                className={`p-3 md:p-5 flex flex-col ${spanClass}`}
+              >
+                {/* Top row: Title + View button */}
+                <div className="flex items-center justify-between mb-4 md:mb-5 pr-1 md:pr-3">
+                  <h3 className="text-2xl font-medium text-gray-900 px-3 truncate">
+                    {project.name}
+                  </h3>
+                </div>
 
-              {/* Image */}
-              <div className="rounded-[28px] p-2 bg-white/80 border border-gray-200 shadow-lg">
-                <div className="rounded-[24px] overflow-hidden aspect-16/13 bg-black">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-1600 ease-[cubic-bezier(0.22,1,0.36,1)] scale-110 hover:scale-100"
-                  />
+                {/* Image */}
+                <div className="rounded-[20px] p-2 bg-white/80 border border-gray-200 shadow-lg flex-1 flex flex-col min-h-[300px] md:min-h-[380px]">
+                  <div className="rounded-[16px] overflow-hidden bg-black flex-1 relative group cursor-pointer">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] scale-105 group-hover:scale-100 opacity-100"
+                    />
+                  </div>
+                </div>
+
+                {/* Footer: Tags + View Button */}
+                <div className="flex items-center justify-between mt-4">
+                  <div className="flex flex-wrap gap-2 px-2 py-1 border border-gray-200 rounded-full w-fit bg-gray-200">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="text-sm font-medium text-gray-700 px-3 py-1 rounded-full whitespace-nowrap"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button className="group flex items-center gap-2 text-lg font-medium text-gray-700 hover:text-gray-900 transition-all shrink-0 border rounded-lg border-gray-200 py-1 px-2">
+                    View
+                    <span className="flex items-center justify-center w-5 h-7 transition-transform duration-300 group-hover:translate-x-1">
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

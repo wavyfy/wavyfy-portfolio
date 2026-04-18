@@ -3,60 +3,55 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
+
 const steps = [
   {
     number: "01",
-    title: "Discovery & Strategy",
+    title: "Audit & Analysis",
     description:
-      "We uncover your goals, audience, and challenges to build a clear roadmap for success.",
+      "Deep-dive diagnostics into your current architecture and market positioning.",
   },
   {
     number: "02",
-    title: "Design & Prototyping",
+    title: "Architectural Design",
     description:
-      "Transforming insights into bold, user-focused designs that connect and convert.",
+      "Crafting the blueprint for a scalable, high-performance user experience.",
   },
   {
     number: "03",
-    title: "Development & Testing",
+    title: "Precision Development",
     description:
-      "Bringing designs to life with clean, performant code and rigorous quality assurance.",
+      "Deploying robust, battle-tested code built with modern stacks.",
   },
   {
     number: "04",
-    title: "Launch & Optimization",
+    title: "Performance Scaling",
     description:
-      "Deploying your project and continuously refining for maximum performance and growth.",
+      "Continuous optimization to ensure your product leads, never follows.",
   },
 ];
 
 function ProcessStep({
   step,
   index,
-  scrollYProgress,
 }: {
   step: (typeof steps)[0];
   index: number;
-  scrollYProgress: MotionValue<number>;
 }) {
+  const stepRef = useRef<HTMLDivElement>(null);
   const total = steps.length;
-  const segment = 1 / total;
-  const base = index * segment;
 
-  // Card + number reveal: first half of the segment
-  const revealStart = base;
-  const revealEnd = base + segment * 0.5;
+  const { scrollYProgress } = useScroll({
+    target: stepRef,
+    offset: ["start 0.85", "center 0.4"],
+  });
 
-  const opacity = useTransform(scrollYProgress, [revealStart, revealEnd], [0, 1]);
-  const y = useTransform(scrollYProgress, [revealStart, revealEnd], [50, 0]);
-
-  // Line fill: second half of the segment (after card is revealed)
-  const lineStart = revealEnd;
-  const lineEnd = base + segment;
-  const lineScaleY = useTransform(scrollYProgress, [lineStart, lineEnd], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
+  const lineScaleY = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
 
   return (
-    <div className="flex gap-5 ml-10 ">
+    <div ref={stepRef} className="flex gap-5 ml-2 sm:ml-10">
       {/* Number + Vertical Line */}
       <div className="flex flex-col items-center">
         <motion.span
@@ -81,9 +76,8 @@ function ProcessStep({
         )}
       </div>
 
-      {/* Card */}
       <motion.div
-        className="bg-white rounded-4xl border h-50 border-gray-200 p-6 mt-6 mb-6 flex-1 shadow-xs"
+        className="bg-white rounded-3xl border h-50 border-gray-200 p-4 sm:p-6 mt-6 mb-6 flex-1 shadow-xs"
         style={{ opacity, y }}
       >
         <h3 className="text-2xl font-medium text-gray-500 mb-5">
@@ -105,7 +99,7 @@ export default function Process() {
   });
 
   return (
-    <section className="bg-[#f5f5f5] sm:px-4 py-20 md:py-28 md:px-10">
+    <section className="sm:px-4 py-20 md:py-28 md:px-10">
       <div className="max-w-8xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: Label + Heading + Description */}
@@ -121,16 +115,15 @@ export default function Process() {
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-6">
               <span className="text-gray-900">
-                Proven &amp; effective process.
+                Strategic Execution.
               </span>
               <br />
-              <span className="text-gray-500">That delivers results.</span>
+              <span className="text-gray-500">Zero compromises.</span>
             </h2>
 
             {/* Description */}
             <p className="text-base text-gray-800 max-w-md text-[1rem]">
-              We dive deep into your goals, audience, and challenges to craft a
-              strategy that drives clear direction and impact.
+              We systematically architect, build, and deploy high-conversion systems tailored to your technical requirements.
             </p>
           </div>
 
@@ -141,7 +134,6 @@ export default function Process() {
                 key={index}
                 step={step}
                 index={index}
-                scrollYProgress={scrollYProgress}
               />
             ))}
           </div>

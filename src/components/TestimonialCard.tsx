@@ -11,7 +11,7 @@ export default function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <div
-      className={`bg-white rounded-3xl p-5 border border-gray-100 max-w-[400px] ${className}`}
+      className={`bg-white rounded-2xl p-5 border border-gray-100 max-w-[400px] ${className}`}
     >
       {/* Quote mark */}
       <div className="flex justify-between items-start mb-2">

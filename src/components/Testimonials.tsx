@@ -1,15 +1,15 @@
-import { ArrowRight, Star } from "lucide-react";
-import BookCallButton from "./BookCallButton";
+import DarkCTACard from "./DarkCTACard";
+import Image from "next/image";
 
 const testimonials = [
   {
     id: 1,
-    metric: "2.3x",
-    title: "increase in lead conversion",
+    metric: "3.5x",
+    title: "increase in platform throughput",
     quote:
-      "Lamosa completely redefined our digital presence. Their strategic design approach and attention to user behavior boosted our conversion rate significantly. We went from just a pretty site to a performance-driven asset.",
+      "Their architectural choices drastically improved our data layer capacity. The system now handles 3.5x the volume without any latency spikes. Exceptional engineering.",
     author: "Sarah Coleman",
-    role: "CMO",
+    role: "CTO",
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
     brandIcon: (
@@ -26,18 +26,18 @@ const testimonials = [
       </svg>
     ),
     column: "left",
-    height: "h-95",
+    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
   },
   {
     id: 2,
-    metric: "3x",
-    title: "faster MVP launch",
+    metric: "100ms",
+    title: "latency reduction across core APIs",
     quote:
-      "Working with Lamosa helped us cut our launch timeline dramatically. They understand product goals and build with both speed and precision. Easily one of the best agencies we've worked with.",
+      "The precision with which they execute is rare. We cut 100ms off our core API responses, leading to an immediate boost in user retention and server efficiency.",
     author: "Amina Khatri",
-    role: "Head of Product",
+    role: "VP of Engineering",
     avatar:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1bf98c?w=150&h=150&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     brandIcon: (
       <svg
         className="w-7 h-7 text-gray-400"
@@ -50,16 +50,16 @@ const testimonials = [
       </svg>
     ),
     column: "left",
-    height: "h-175",
+    spanClass: "md:col-span-2 lg:col-span-2 lg:row-span-2",
   },
   {
     id: 3,
-    metric: "45%",
-    title: "Reduced bounce rate",
+    metric: "Zero",
+    title: "downtime during major migration",
     quote:
-      "The team at Lamosa not only built us a beautiful platform—they made it fast, smart, and incredibly intuitive. Their UX insights and performance tweaks made a huge difference in keeping users engaged.",
+      "They architected and executed our v3 migration flawlessly. Moving a massive active user base with zero downtime requires a team that truly understands infrastructure routing and redundancy.",
     author: "Marcus Levine",
-    role: "Co-founder",
+    role: "Co-founder & Architect",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     brandIcon: (
@@ -76,16 +76,16 @@ const testimonials = [
       </svg>
     ),
     column: "right",
-    height: "h-95",
+    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
   },
   {
     id: 4,
-    metric: "62%",
-    title: "increase in mobile traffic retention",
+    metric: "4x",
+    title: "faster build pipelines",
     quote:
-      "Lamosa completely redefined our digital presence. Their strategic design approach and attention to user behavior boosted our conversion rate significantly. We went from just a pretty site to a performance-driven asset.",
+      "By optimizing our container configurations and caching strategies, they slashed our CI/CD pipeline times entirely. Our developers are now shipping code 4x faster.",
     author: "Julian Ortega",
-    role: "CEO",
+    role: "Head of Infrastructure",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     brandIcon: (
@@ -102,7 +102,7 @@ const testimonials = [
       </svg>
     ),
     column: "right",
-    height: "h-95",
+    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
   },
 ];
 
@@ -115,29 +115,25 @@ const QuoteIcon = () => (
 // Extracted reusable card component
 const TestimonialCard = ({
   testimonial,
+  className,
 }: {
   testimonial: (typeof testimonials)[0];
+  className?: string;
 }) => (
   <div
-    className={`bg-white rounded-[40px] p-8 md:p-8 shadow-lg border border-gray-200 flex flex-col ${testimonial.height}`}
+    className={`bg-white rounded-3xl p-5 md:p-5 shadow-lg border border-gray-200 flex flex-col h-full ${className || ""}`}
   >
-    <h3 className="text-3xl font-semibold text-gray-900 mb-1">
-      {testimonial.metric}
-    </h3>
-    <p className="text-2xl text-gray-500 font-medium mb-3">
-      {testimonial.title}
-    </p>
-    <QuoteIcon />
-    <p className="text-gray-700 text-sm md:text-base leading-relaxed font-medium mt-10">
-      {testimonial.quote}
-    </p>
-    <div className="flex items-center justify-between mt-auto">
+    {/* Avatar, Author, Role & BrandIcon (Now at the top) */}
+    <div className="flex items-center justify-between mb-8">
       <div className="flex items-center gap-3">
-        <img
+        <Image
           src={testimonial.avatar}
           alt={testimonial.author}
-          className="w-12 h-12 rounded-full object-cover"
-        />
+          width={48}
+          height={48}
+          sizes="48px"
+          className="rounded-full object-cover"
+        />{" "}
         <div>
           <h4 className="text-sm font-semibold text-gray-900">
             {testimonial.author}
@@ -149,15 +145,26 @@ const TestimonialCard = ({
       </div>
       {testimonial.brandIcon}
     </div>
+
+    {/* Quote Section */}
+    <QuoteIcon />
+    <p className="text-gray-700 text-sm md:text-base leading-relaxed font-medium mt-6 mb-10">
+      {testimonial.quote}
+    </p>
+
+    {/* Metric & Title (Now at the bottom) */}
+    <div className="mt-auto bg-gray-200 p-4 rounded-2xl">
+      <h3 className="text-3xl font-semibold text-gray-900 mb-1">
+        {testimonial.metric}
+      </h3>
+      <p className="text-2xl text-gray-500 font-medium">{testimonial.title}</p>
+    </div>
   </div>
 );
 
 export default function Testimonials() {
-  const leftCards = testimonials.filter((t) => t.column === "left");
-  const rightCards = testimonials.filter((t) => t.column === "right");
-
   return (
-    <section className="bg-[#f5f5f5] sm:px-4 py-20 md:py-18 md:px-7">
+    <section className="psm:px-4 py-20 md:py-18 md:px-7">
       <div className="max-w-8xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
@@ -168,113 +175,69 @@ export default function Testimonials() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
-            <span className="text-gray-900">We're loved.</span>
+            <span className="text-gray-900">Impact Reports.</span>
             <br />
-            <span className="text-gray-500">Just success stories.</span>
+            <span className="text-gray-500">Measurable technical output.</span>
           </h2>
         </div>
 
-        {/* Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start border border-gray-200 bg-white rounded-[65px] p-6">
-          {/* Left Column */}
-          <div className="flex flex-col gap-6">
-            {leftCards.map((t) => (
-              <TestimonialCard key={t.id} testimonial={t} />
-            ))}
-          </div>
-
-          {/* Right Column */}
-          <div className="flex flex-col gap-6">
-            {rightCards.map((t) => (
-              <TestimonialCard key={t.id} testimonial={t} />
-            ))}
-
-            {/* Dark CTA Card */}
-            <div className="bg-[#0f1115] rounded-[40px] p-8 md:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between h-[300px]">
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(#ffffff 1px, transparent 1px)",
-                  backgroundSize: "15px 15px",
-                  maskImage:
-                    "linear-gradient(to right, transparent, black 110%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent, black 110%)",
-                }}
-              />
-              <div className="relative z-10">
-                <p className="text-2xl md:text-3xl font-medium tracking-tight leading-tightest">
-                  <span className="text-white">You focus </span>
-                  <span className="text-gray-500">on</span>
-                  <br />
-                  <span className="text-gray-500">your company.</span>
-                  <br />
-                  <span className="text-gray-500">We make </span>
-                  <span className="text-white">it happen.</span>
-                  <br />
-                  <span className="text-white font-semibold mt-1 block">
-                    Unstoppable Growth.
-                  </span>
-                </p>
-              </div>
-              <div className="relative z-10 flex justify-end mt-8">
-                <BookCallButton
-                  className="flex items-center gap-3 bg-white text-gray-900 text-lg font-medium pl-6 pr-3 py-3 rounded-full transition-all hover:bg-gray-100"
-                  iconContainerClassName="w-12 h-8 border border-gray-300 rounded-full bg-gray-100"
-                  iconClassName="w-4 h-4 text-gray-900"
-                />
-              </div>
+        {/* Bento Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 border border-gray-200 bg-white rounded-[32px] md:rounded-[40px] p-3 md:p-6 lg:p-8">
+          {testimonials.map((t) => (
+            <div key={t.id} className={t.spanClass}>
+              <TestimonialCard testimonial={t} />
             </div>
+          ))}
+
+          {/* Dark CTA Card seamlessly occupying space in grid */}
+          <div className="md:col-span-1 lg:col-span-2 lg:row-span-1">
+            <DarkCTACard className="h-full min-h-[300px]" />
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 flex flex-col items-end gap-4">
-          <button className="flex items-center gap-3 bg-white text-gray-900 text-md font-medium pl-6 pr-2 py-2 rounded-full border border-gray-200 shadow-sm transition-all hover:bg-gray-50">
-            <span>View All Reviews</span>
-            <span className="flex items-center justify-center w-12 h-8 border border-gray-300 rounded-full bg-[#f5f5f5]">
-              <ArrowRight className="w-4 h-4 text-gray-500" />
-            </span>
-          </button>
+        {/* {/* Footer */}
+        {/* <div className="mt-12 flex flex-col items-end gap-4">
+  <button className="flex items-center gap-3 bg-white text-gray-900 text-md font-medium pl-6 pr-2 py-2 rounded-xl border border-gray-200 shadow-sm transition-all hover:bg-gray-50">
+    <span>View All Reviews</span>
+    <span className="flex items-center justify-center w-12 h-8 border border-gray-300 rounded-lg bg-[#f5f5f5]">
+      <ArrowRight className="w-4 h-4 text-gray-500" />
+    </span>
+  </button>
 
-          {/* Social Proof / Reviews */}
-          <div className="flex items-center gap-4">
-            {/* Overlapping Avatars */}
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-[#f5f5f5] bg-gray-300 overflow-hidden"
-                >
-                  <img
-                    src={`https://i.pravatar.cc/64?img=${i + 10}`}
-                    alt={`Reviewer ${i}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Stars and text */}
-            <div className="flex flex-col items-start">
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4 text-gray-800 fill-current"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-xs text-gray-700 mt-0.5 font-semibold">
-                From 150+ reviews
-              </span>
-            </div>
-          </div>
+  <div className="flex items-center gap-4">
+    <div className="flex -space-x-2">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <div
+          key={i}
+          className="w-8 h-8 rounded-full border-2 border-[#f5f5f5] bg-gray-300 overflow-hidden"
+        >
+          <img
+            src={`https://i.pravatar.cc/64?img=${i + 10}`}
+            alt={`Reviewer ${i}`}
+            className="w-full h-full object-cover"
+          />
         </div>
+      ))}
+    </div>
+
+    <div className="flex flex-col items-start">
+      <div className="flex gap-0.5">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <svg
+            key={i}
+            className="w-4 h-4 text-gray-800 fill-current"
+            viewBox="0 0 20 20"
+          >
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+      </div>
+      <span className="text-xs text-gray-700 mt-0.5 font-semibold">
+        From 150+ reviews
+      </span>
+    </div>
+  </div>
+</div> */}
       </div>
     </section>
   );

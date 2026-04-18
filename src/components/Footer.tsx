@@ -1,5 +1,7 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import BookCallButton from "./BookCallButton";
+import StatusBadge from "./StatusBadge";
+import SecondaryButton from "./SecondaryButton";
 
 const LogoPlaceholder = ({ className }: { className?: string }) => (
   <svg
@@ -19,58 +21,56 @@ const LogoPlaceholder = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f5f5f5] px-4 md:px-5 pb-5">
-      <div className="bg-white rounded-[40px] md:rounded-[60px] max-w-8xl mx-auto pt-24 pb-8 px-6 md:px-16 flex flex-col items-center relative overflow-hidden shadow-sm border border-gray-100">
+    <footer className="pb-5 z-50">
+      <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-8xl mx-auto pt-24 pb-8 px-4 sm:px-6 md:px-10 flex flex-col items-center relative overflow-hidden shadow-2xl border border-gray-200">
         {/* Very large faded background text */}
-        <div className="absolute bottom-[-5%] left-0 w-full flex justify-center pointer-events-none select-none z-0">
+        <div className="absolute bottom-[-5%] left-0 w-full flex justify-center pointer-events-none select-none z-0 ">
           <span
-            className="text-[22vw] font-bold text-gray-100 leading-none tracking-tighter"
+            className="text-[25vw] font-bold text-gray-300 leading-none tracking-tighter"
             style={{
               WebkitMaskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
+                "linear-gradient(to bottom, black 5%, transparent 90%)",
               maskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
+                "linear-gradient(to bottom, black 5%, transparent 90%)",
             }}
           >
-            Lamosa<span className="text-red-100">.</span>
+            Wavyfy<span className="text-red-500">.</span>
           </span>
         </div>
 
         {/* --- Top CTA Section --- */}
         <div className="flex flex-col items-center text-center z-10 relative">
-          <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold leading-[1.1] tracking-tight">
-            <span className="text-gray-900">Trusted by 1,200+ founders.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold leading-[0.8] tracking-tight">
+            <span className="text-gray-900 text-3xl sm:text-4xl lg:text-[2.4rem]">
+              Ready to ship?
+            </span>
             <br />
-            <span className="text-gray-400">
-              Turning ideas into bold brands.
+            <span className="text-gray-500 text-3xl sm:text-4xl lg:text-[2.4rem]">
+              Initialize your next project.
             </span>
           </h2>
 
-          <p className="mt-8 text-gray-500 max-w-sm mx-auto text-sm md:text-base leading-relaxed font-medium">
-            Book a free discovery call to discuss strategy, set goals, and see
-            how we can help you grow.
+          <p className="mt-8 text-gray-600 max-w-sm mx-auto text-sm md:text-base leading-relaxed font-medium">
+            Secure an architectural review to benchmark your current infrastructure and map out an execution plan.
           </p>
 
-          <div className="mt-10 flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700">
-            <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-            Open for work
-          </div>
+          <StatusBadge className="mt-10" />
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Book A Call Button */}
             <BookCallButton
-              className="flex items-center gap-4 bg-[#0b1015] text-white text-sm font-medium pl-6 pr-2 py-2 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-transform hover:scale-105"
-              iconContainerClassName="w-8 h-8 rounded-full bg-[#1b2025]"
-              iconClassName="w-4 h-4 text-white"
+              className="flex items-center gap-4 bg-[#0b1015] text-white text-sm font-medium pl-6 pr-2 py-2 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-transform hover:scale-105"
+              iconContainerClassName="w-12 h-10 rounded-lg bg-[#1b2025]"
+              iconClassName="w-5 h-5 text-white"
             />
             {/* View Plans Button */}
-            <button className="flex items-center justify-center bg-white border border-gray-200 text-gray-800 text-sm font-medium px-8 py-3.5 rounded-full transition-colors hover:bg-gray-50 w-full sm:w-auto">
+            <SecondaryButton className="w-full sm:w-auto text-lg">
               View Plans
-            </button>
+            </SecondaryButton>
           </div>
 
           {/* Client Logos Row */}
-          <div className="flex items-center gap-8 justify-center mt-16 opacity-30 grayscale saturate-0">
+          <div className="flex items-center gap-8 justify-center mt-8 opacity-30 grayscale saturate-0">
             <div className="flex items-center gap-2">
               <LogoPlaceholder className="w-6 h-6" />
               <span className="font-bold text-lg tracking-tight">
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         {/* --- Middle Columns Section --- */}
-        <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-16 mt-32 z-10 relative">
+        <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-16 mt-24 z-10 relative">
           {/* Left Col: Brand & Newsletter */}
           <div className="max-w-sm">
             {/* Logo */}
@@ -110,10 +110,10 @@ export default function Footer() {
               </span>
             </div>
 
-            <h4 className="text-sm font-bold text-gray-900 mb-3">
+            <h4 className="text-lg font-medium text-gray-900 mb-3">
               Join our newsletter
             </h4>
-            <p className="text-sm text-gray-500 mb-6 leading-relaxed font-medium">
+            <p className="text-sm text-gray-600 mb-6 leading-relaxed font-medium">
               Stay ahead with strategies uniting design, technology, and
               marketing to deliver measurable growth.
             </p>
@@ -122,16 +122,16 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email..."
-                className="w-full bg-white border border-gray-200 rounded-full py-3.5 px-5 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all placeholder:text-gray-400"
+                className="w-full bg-white border border-gray-200 rounded-xl py-3.5 px-5 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all placeholder:text-gray-400"
               />
-              <button className="absolute right-1.5 top-1.5 bottom-1.5 aspect-square bg-[#de5145] rounded-full flex items-center justify-center text-white hover:bg-[#c9453a] transition-colors">
+              <button className="absolute right-1.5 top-1.5 bottom-1.5 aspect-square bg-[#de5145] rounded-lg flex items-center justify-center text-white hover:bg-[#c9453a] transition-colors">
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
           {/* Right Col: Links */}
-          <div className="flex gap-16 md:gap-24 lg:mr-8">
+          <div className="flex flex-wrap gap-10 sm:gap-16 md:gap-24 lg:mr-8">
             {/* Company */}
             <div className="flex flex-col gap-4">
               <h4 className="text-sm font-bold text-gray-900 mb-2">Company</h4>

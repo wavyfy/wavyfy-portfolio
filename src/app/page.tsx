@@ -1,37 +1,28 @@
 import Navbar from "@/components/Navbar";
 import BlurOverlay from "@/components/BlurOverlay";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import Showcase from "@/components/Showcase";
 import Projects from "@/components/Projects";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
-import Pricing from "@/components/Pricing";
+import Services from "@/components/Services";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+// import { Reveal } from "@/components/Reveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f5f5f5] px-5">
-      {/* <div className="fixed bottom-0 left-0 w-full h-20 z-50 pointer-events-none ">
-        <div
-          className="w-full h-full backdrop-blur-lg"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to top, black 40%, transparent 100%)",
-            maskImage: "linear-gradient(to top , black 0%, transparent 100%)",
-          }}
-        />
-      </div> */}
-
+    <main className="min-h-screen bg-[#f5f5f5] px-2 sm:px-5 page-bg">
       <BlurOverlay />
 
       <Navbar />
+
       <Hero />
-      <Services />
+      <Showcase />
       <Projects />
       <Process />
       <Testimonials />
-      <Pricing />
+      <Services />
       <FAQ />
       <Footer />
     </main>

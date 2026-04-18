@@ -1,48 +1,49 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus, ArrowRight } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
+import DarkCTACard from "./DarkCTACard";
 
 const faqs = [
   {
-    question: "What is included with each Framer template?",
+    question: "What does your architecture stack look like?",
     answer:
-      "Each template comes with a fully responsive design, editable components, and SEO-friendly structure ready to customize.",
+      "We build heavily on robust modern primitives: React/Next.js for the frontend, Node/Go for microservices, and specialized edge infrastructure for global delivery.",
   },
   {
-    question: "Do I need coding skills to use your templates?",
+    question: "Can your systems handle burst scaling?",
     answer:
-      "No coding skills are required. Everything is visually editable, allowing you to easily adjust text, colors, and layouts without touching any code.",
+      "Absolutely. We architect for high concurrency from day one, utilizing edge caching, horizontal scaling policies, and automated failovers to handle extreme traffic spikes.",
   },
   {
-    question: "Can I use a template for multiple projects?",
+    question: "Do you integrate with legacy enterprise platforms?",
     answer:
-      "Our standard license applies to a single end product. For multiple projects, you will need to purchase an extended or multi-use license.",
+      "Yes. We frequently build scalable integration layers and proxy services that allow modern frontends to securely communicate with legacy backend systems.",
   },
   {
-    question: "Are the templates optimized for performance?",
+    question: "How do you handle security and compliance?",
     answer:
-      "Yes, all templates are optimized for fast loading speeds, following best practices for modern web performance.",
+      "Security is fully integrated into our pipelines, including automated vulnerability scanning, strict IAM configurations, and core compliance readiness for data handling.",
   },
   {
-    question: "Do you offer support after purchase?",
+    question: "Do you provide post-deployment SLA?",
     answer:
-      "We provide 30 days of free support for bug fixes and inquiries related to the template's core functionality.",
+      "We offer extended SLA agreements covering uptime guarantees, continuous performance monitoring, and critical bug resolutions post-launch.",
   },
   {
-    question: "Can I integrate third-party tools with these templates?",
+    question: "What is your typical development cycle?",
     answer:
-      "Absolutely. You can easily integrate custom scripts, analytics, and third-party SaaS widgets depending on your platform limits.",
+      "We run lean, iterative sprints with high-frequency deployments. Our CI/CD pipelines ensure we ship improvements daily without disrupting live user traffic.",
   },
   {
-    question: "Do you offer customizations beyond the template?",
+    question: "Are your platforms SEO optimized out of the box?",
     answer:
-      "Yes, we offer custom development and design services if you need functionality or layouts tailored specifically to your brand.",
+      "Yes. Utilizing server-side rendering and dynamic metadata injection, our platforms achieve near-perfect lighthouse scores to dominate Core Web Vitals.",
   },
   {
-    question: "Will my template receive updates?",
+    question: "Can we migrate from our existing monolithic stack?",
     answer:
-      "Yes, we periodically push updates to ensure compatibility with platform advancements and to add new features.",
+      "Our team excels at strangler fig migrations, allowing you to steadily migrate from legacy monoliths to decoupled microservices with zero operational downtime.",
   },
 ];
 
@@ -50,47 +51,33 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-[#f5f5f5] sm:px-4 py-20 md:py-28 md:px-5">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-start">
+    <section className="sm:px-4 py-20 md:py-28 md:px-5">
+      <div className="max-w-8xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-0 items-start">
           {/* Left Column: Header & CTA */}
-          <div className="flex flex-col justify-between h-full lg:sticky lg:top-32">
-            {/* Header Area */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-                <span className="text-md font-medium text-gray-700">FAQ</span>
+          <div className="flex flex-col h-full">
+            {/* Header sticks inside this div only */}
+            <div className="flex-1 mb-10">
+              <div className="lg:sticky lg:top-32">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
+                  <span className="text-md font-medium text-gray-700">FAQ</span>
+                </div>
+                <h2 className="text-4xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-12">
+                  <span className="text-gray-900">Technical</span>
+                  <br />
+                  <span className="text-gray-500">Clarifications.</span>
+                </h2>
               </div>
-              <h2 className="text-4xl sm:text-4xl md:text-[2.8rem] font-semibold leading-[1.2] tracking-tight mb-12">
-                <span className="text-gray-900">Got a question?</span>
-                <br />
-                <span className="text-gray-500">We've got answers.</span>
-              </h2>
             </div>
 
-            {/* Dark CTA Card */}
-            <div className="bg-[#0b1015] rounded-[32px] p-8 md:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between h-[250px] md:h-[280px] max-w-sm mt-8">
-              {/* Dotted grid background overlay */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              <div className="relative z-10">
-                <h3 className="text-white text-3xl font-semibold tracking-tight leading-snug">
-                  Still have questions?
-                </h3>
-              </div>
-              <div className="relative z-10 flex justify-end mt-auto">
-                <button className="flex items-center gap-3 bg-white text-gray-900 text-sm font-medium pl-6 pr-2 py-2 rounded-full transition-all hover:bg-gray-100">
-                  <span>Contact Us</span>
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#f5f5f5]">
-                    <ArrowRight className="w-4 h-4 text-gray-900" />
-                  </span>
-                </button>
-              </div>
+            {/* CTA sits at bottom, completely separate */}
+            <div>
+              <DarkCTACard className="max-w-md">
+                <p className="text-white text-3xl font-semibold">
+                  Still analyzing?
+                </p>
+              </DarkCTACard>
             </div>
           </div>
 
@@ -103,25 +90,19 @@ export default function FAQ() {
                 <div
                   key={index}
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className={`bg-white border border-gray-200 shadow-sm cursor-pointer transition-all duration-500 overflow-hidden
-                    ${isOpen ? "rounded-[32px] p-2" : "rounded-full p-2 hover:border-gray-300"}`}
+                  className={`bg-white border rounded-3xl border-gray-200 cursor-pointer transition-all duration-500 ease-in-out overflow-hidden
+          ${isOpen ? "" : " hover:border-gray-300"}`}
                 >
                   {/* Top Row: Question + Icon */}
-                  <div className="flex items-center justify-between px-5 py-3 select-none">
+                  <div className="flex items-center justify-between px-4 md:px-6 py-4 md:py-5 select-none">
                     <h4
-                      className={`text-[15px] font-semibold transition-colors ${
+                      className={`text-[16px] font-semibold transition-colors ${
                         isOpen ? "text-gray-900" : "text-gray-500"
                       }`}
                     >
                       {faq.question}
                     </h4>
-                    <div
-                      className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                        isOpen
-                          ? "border-gray-200 bg-white"
-                          : "border-gray-200 bg-white"
-                      }`}
-                    >
+                    <div className="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center shrink-0 transition-colors">
                       {isOpen ? (
                         <Minus className="w-4 h-4 text-gray-400" />
                       ) : (
@@ -132,11 +113,10 @@ export default function FAQ() {
 
                   {/* Expanded Content */}
                   <div
-                    className={`transition-all duration-500 ease-in-out px-2 pb-2 ${
-                      isOpen ? "max-h-60 opacity-100 mt-1" : "max-h-0 opacity-0 p-0 m-0 overflow-hidden"
-                    }`}
+                    className={`transition-all duration-500 ease-in-out overflow-hidden
+            ${isOpen ? "max-h-60 opacity-100 m-3" : "max-h-0 opacity-0 "}`}
                   >
-                    <div className="bg-[#f9f9f9] rounded-[24px] p-5 border border-gray-100 h-full">
+                    <div className="bg-[#f9f9f9] rounded-2xl p-3 border border-gray-200">
                       <p className="text-sm text-gray-600 leading-relaxed font-medium">
                         {faq.answer}
                       </p>
