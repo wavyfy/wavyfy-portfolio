@@ -13,10 +13,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f5f5f5] px-2 sm:px-5 page-bg">
-      <BlurOverlay />
-
       <Navbar />
-
       <Hero />
       <Showcase />
       <Projects />
@@ -25,6 +22,7 @@ export default function Home() {
       <Services />
       <FAQ />
       <Footer />
+      <BlurOverlay />
     </main>
   );
 }

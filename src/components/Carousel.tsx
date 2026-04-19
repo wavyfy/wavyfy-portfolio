@@ -66,7 +66,7 @@ export default function Carousel({
       { transform: offset },
     ];
 
-    const scrollDuration = slides.length * 4000;
+    const scrollDuration = slides.length * 14000;
 
     const timing: KeyframeAnimationOptions = {
       duration: scrollDuration,

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import DarkCTACard from "./DarkCTACard";
 import StatusBadge from "./StatusBadge";
+import { Reveal } from "./Reveal";
 
 const faqs = [
   {
@@ -52,18 +53,19 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="sm:px-4 py-20 md:py-28 md:px-5">
-      <div className="max-w-8xl mx-auto">
+    <section className="sm:px-4 py-16 md:py-20 md:px-10">
+      <Reveal delay={0.5}>
+        <div className="max-w-8xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-0 items-start">
           {/* Left Column: Header & CTA */}
           <div className="flex flex-col h-full">
             {/* Header sticks inside this div only */}
-            <div className="flex-1 mb-10">
+            <div className="flex-1 mb-0 md:mb-10">
               <div className="lg:sticky lg:top-32 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-auto">
                 <div className="flex items-center gap-2 mb-4">
                   <StatusBadge dotColor="bg-red-500" title="FAQ" />
                 </div>
-                <h2 className="text-4xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-12">
+                <h2 className="text-4xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-0">
                   <span className="text-gray-900">Technical</span>
                   <br />
                   <span className="text-gray-500">Clarifications.</span>
@@ -72,7 +74,7 @@ export default function FAQ() {
             </div>
 
             {/* CTA sits at bottom, completely separate */}
-            <div>
+            <div className="hidden lg:block">
               <DarkCTACard className="max-w-md">
                 <p className="text-white text-3xl font-semibold">
                   Still analyzing?
@@ -126,8 +128,18 @@ export default function FAQ() {
               );
             })}
           </div>
+
+          {/* Mobile CTA sits after Accordion */}
+          <div className="block lg:hidden w-full mt-4">
+            <DarkCTACard className="w-full">
+              <p className="text-white text-3xl font-semibold">
+                Still analyzing?
+              </p>
+            </DarkCTACard>
+          </div>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

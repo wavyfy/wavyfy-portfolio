@@ -2,6 +2,7 @@ interface TestimonialCardProps {
   quote: string;
   author: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function TestimonialCard({
@@ -15,7 +16,9 @@ export default function TestimonialCard({
     >
       {/* Quote mark */}
       <div className="flex justify-between items-start mb-2">
-        <p className="text-xs font-semibold  text-gray-600 leading-relaxed pr-4">{quote}</p>
+        <p className="text-xs font-semibold  text-gray-600 leading-relaxed pr-4">
+          {quote}
+        </p>
         <span className="text-gray-400 text-2xl font-serif leading-none shrink-0">
           &#x201D;
         </span>

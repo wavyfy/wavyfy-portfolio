@@ -7,9 +7,6 @@ export default function GradualBlurSection() {
     <section
       style={{ position: "fixed", height: 500, overflow: "hidden", zIndex: 10 }}
     >
-      <div style={{ height: "100%", overflowY: "auto", padding: "6rem 2rem" }}>
-        {/* <!-- Content Here - such as an image or text --> */}
-      </div>
       <div className="relative">
         <GradualBlur
           target="page"

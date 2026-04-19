@@ -10,16 +10,18 @@ type RevealProps = {
   blur?: number;
   scale?: number;
   once?: boolean;
+  margin?: string;
 };
 
 export function Reveal({
   children,
-  delay = 0,
-  duration = 0.6,
+  delay = 0.15,
+  duration = 0.8,
   y = 40,
   blur = 8,
   scale = 1,
   once = true,
+  margin = "0px",
 }: RevealProps) {
   return (
     <motion.div
@@ -35,7 +37,7 @@ export function Reveal({
         filter: "blur(0px)",
         scale: 1,
       }}
-      viewport={{ once, amount: 0.01, margin: "100px" }}
+      viewport={{ once, amount: 0.01, margin }}
       transition={{
         delay,
         duration,

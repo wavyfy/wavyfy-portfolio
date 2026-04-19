@@ -1,5 +1,6 @@
 import { ArrowRight, Info } from "lucide-react";
 import StatusBadge from "./StatusBadge";
+import { Reveal } from "./Reveal";
 
 const services = [
   {
@@ -98,8 +99,9 @@ const FeatureIcon = ({ className }: { className?: string }) => (
 
 export default function Services() {
   return (
-    <section className="sm:px-4 py-20 md:py-28 md:px-10">
-      <div className="max-w-8xl mx-auto">
+    <section id="services" className="sm:px-4 py-16 md:py-20 md:px-10">
+      <Reveal delay={0.5}>
+        <div className="max-w-8xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-2 mb-4">
@@ -220,6 +222,7 @@ export default function Services() {
           ))}
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

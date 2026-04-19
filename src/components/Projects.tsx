@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import StatusBadge from "./StatusBadge";
+import { Reveal } from "./Reveal";
 
 const projects = [
   {
@@ -31,8 +32,9 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="sm:px-4 py-20 md:py-8 md:px-7">
-      <div className="max-w-8xl mx-auto">
+    <section id="projects" className="sm:px-4 py-16 md:py-20 md:px-10">
+      <Reveal delay={1}>
+        <div className="max-w-8xl mx-auto">
         {/* Section Header — Centered */}
         <div className="text-center mb-14">
           {/* Label */}
@@ -109,6 +111,7 @@ export default function Projects() {
           })}
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

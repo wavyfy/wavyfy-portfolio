@@ -1,6 +1,7 @@
 import DarkCTACard from "./DarkCTACard";
 import Image from "next/image";
 import StatusBadge from "./StatusBadge";
+import { Reveal } from "./Reveal";
 
 const testimonials = [
   {
@@ -165,36 +166,39 @@ const TestimonialCard = ({
 
 export default function Testimonials() {
   return (
-    <section className="psm:px-4 py-20 md:py-18 md:px-7">
-      <div className="max-w-8xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <StatusBadge dotColor="bg-red-500" title="Testimonials" />
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
-            <span className="text-gray-900">Impact Reports.</span>
-            <br />
-            <span className="text-gray-500">Measurable technical output.</span>
-          </h2>
-        </div>
-
-        {/* Bento Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 border border-gray-200 bg-white rounded-[32px] md:rounded-[40px] p-3 md:p-6 lg:p-8">
-          {testimonials.map((t) => (
-            <div key={t.id} className={t.spanClass}>
-              <TestimonialCard testimonial={t} />
+    <section id="testimonials" className="sm:px-4 py-16 md:py-20 md:px-10">
+      <Reveal delay={0.5}>
+        <div className="max-w-8xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="flex items-center gap-2 mb-4">
+              <StatusBadge dotColor="bg-red-500" title="Testimonials" />
             </div>
-          ))}
-
-          {/* Dark CTA Card seamlessly occupying space in grid */}
-          <div className="md:col-span-1 lg:col-span-2 lg:row-span-1">
-            <DarkCTACard className="h-full min-h-[300px]" />
+            <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
+              <span className="text-gray-900">Impact Reports.</span>
+              <br />
+              <span className="text-gray-500">
+                Measurable technical output.
+              </span>
+            </h2>
           </div>
-        </div>
 
-        {/* {/* Footer */}
-        {/* <div className="mt-12 flex flex-col items-end gap-4">
+          {/* Bento Grid Container */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 border border-gray-200 bg-white rounded-[32px] md:rounded-[40px] p-3 md:p-6 lg:p-8">
+            {testimonials.map((t) => (
+              <div key={t.id} className={t.spanClass}>
+                <TestimonialCard testimonial={t} />
+              </div>
+            ))}
+
+            {/* Dark CTA Card seamlessly occupying space in grid */}
+            <div className="md:col-span-1 lg:col-span-2 lg:row-span-1">
+              <DarkCTACard className="h-full min-h-[300px]" />
+            </div>
+          </div>
+
+          {/* {/* Footer */}
+          {/* <div className="mt-12 flex flex-col items-end gap-4">
   <button className="flex items-center gap-3 bg-white text-gray-900 text-md font-medium pl-6 pr-2 py-2 rounded-xl border border-gray-200 shadow-sm transition-all hover:bg-gray-50">
     <span>View All Reviews</span>
     <span className="flex items-center justify-center w-12 h-8 border border-gray-300 rounded-lg bg-[#f5f5f5]">
@@ -236,7 +240,8 @@ export default function Testimonials() {
     </div>
   </div>
 </div> */}
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

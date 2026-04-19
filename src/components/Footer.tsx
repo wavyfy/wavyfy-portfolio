@@ -92,6 +92,7 @@ export default function Footer() {
                 </span>
                 <ArrowUpRight className="w-3.5 h-3.5 ml-1 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
               </a>
+              
             </div>
 
             {/* Socials */}
@@ -146,7 +147,7 @@ export default function Footer() {
                 className="group flex items-center gap-2.5 text-sm font-medium text-gray-600 hover:text-[#de5145] transition-all duration-500"
               >
                 <svg
-                  className="w-3.5 h-3.5"
+                  className="w-5 h-5"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -164,47 +165,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* --- Middle Columns Section --- */}
-        {/* <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-16 mt-24 z-10 relative"> 
-   
-          <div className="max-w-sm">
-          
-            <div className="flex items-center gap-2.5 mb-12">
-              <svg
-                className="w-8 h-8 text-black"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M4 20h4L16 4h-4zM12 20h4L24 4h-4z" />
-              </svg>
-              <span className="text-3xl font-bold tracking-tight text-gray-900">
-                Wavyfy
-              </span>
-            </div>
-
-            <h4 className="text-lg font-medium text-gray-900 mb-3">
-              Join our newsletter
-            </h4>
-            <p className="text-sm text-gray-600 mb-6 leading-relaxed font-medium">
-              Stay ahead with strategies uniting design, technology, and
-              marketing to deliver measurable growth.
-            </p>
-
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Enter your email..."
-                className="w-full bg-white border border-gray-200 rounded-xl py-3.5 px-5 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all placeholder:text-gray-400"
-              />
-              <button className="absolute right-1.5 top-1.5 bottom-1.5 aspect-square bg-[#de5145] rounded-lg flex items-center justify-center text-white hover:bg-[#c9453a] transition-colors">
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div> 
-
-    
-        </div> */}
-
         {/* Very large faded background text */}
         <div className="w-full flex justify-center pointer-events-none select-none z-0 mt-10 md:mt-16 sm:-mb-[3%] md:-mb-[5%]">
           <span
@@ -221,7 +181,7 @@ export default function Footer() {
         </div>
 
         {/* --- Bottom Base Row --- */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 z-10 relative">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 z-20 relative">
           <div className="flex items-center gap-8">
             <a
               href="#"
