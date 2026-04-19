@@ -5,12 +5,15 @@ import React, { useRef, useEffect, useState } from "react";
 type CarouselProps = {
   slides: React.ReactNode[];
   direction?: "horizontal" | "vertical";
-  interval?: number; // deprecated for continuous, kept for compatibility
-  speed?: number; // deprecated for continuous, kept for compatibility
+  interval?: number;
+  speed?: number;
   pauseOnHover?: boolean;
   slowDownOnHover?: boolean;
   slideSize?: string;
   gap?: string;
+  gapSm?: string;
+  gapMd?: string;
+  gapLg?: string;
   className?: string;
 };
 
@@ -20,24 +23,39 @@ export default function Carousel({
   pauseOnHover = false,
   slowDownOnHover = true,
   slideSize = "100%",
-  gap = "0px",
+  gap = "16px",
+  gapSm,
+  gapMd,
+  gapLg,
   className = "",
 }: CarouselProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [activeGap, setActiveGap] = useState(gap);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<Animation | null>(null);
 
-  // Triple the array:
-  // Set 1 transitions to Set 2.
-  // Set 3 exists so the trailing edge is visually filled.
+  // Responsive gap calculation
+  useEffect(() => {
+    const updateGap = () => {
+      const w = window.innerWidth;
+      if (w >= 1024 && gapLg) setActiveGap(gapLg);
+      else if (w >= 768 && gapMd) setActiveGap(gapMd);
+      else if (w >= 640 && gapSm) setActiveGap(gapSm);
+      else setActiveGap(gap);
+    };
+
+    updateGap();
+    window.addEventListener("resize", updateGap);
+    return () => window.removeEventListener("resize", updateGap);
+  }, [gap, gapSm, gapMd, gapLg]);
+
   const extendedSlides = [...slides, ...slides, ...slides];
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const itemsPerSet = slides.length;
-    // Calculate the precise pixel/percentage coordinate to jump back exactly 1 array-length
-    const distanceCalc = `calc(-${itemsPerSet} * (${slideSize} + ${gap}))`;
+    const distanceCalc = `calc(-${itemsPerSet} * (${slideSize} + ${activeGap}))`;
     const offset =
       direction === "horizontal"
         ? `translate3d(${distanceCalc}, 0, 0)`
@@ -48,9 +66,7 @@ export default function Carousel({
       { transform: offset },
     ];
 
-    // Smooth continuous loop timing.
-    // Roughly 4 seconds per slide for a premium feeling scrolling speed.
-    const scrollDuration = itemsPerSet * 4000;
+    const scrollDuration = slides.length * 4000;
 
     const timing: KeyframeAnimationOptions = {
       duration: scrollDuration,
@@ -61,19 +77,17 @@ export default function Carousel({
     const anim = containerRef.current.animate(keyframes, timing);
     animationRef.current = anim;
 
-    return () => {
-      anim.cancel();
-    };
-  }, [slides.length, slideSize, gap, direction]);
+    return () => anim.cancel();
+  }, [slides.length, slideSize, activeGap, direction]);
 
   useEffect(() => {
     if (animationRef.current) {
       if (isHovered && pauseOnHover) {
         animationRef.current.playbackRate = 0;
       } else if (isHovered && slowDownOnHover) {
-        animationRef.current.playbackRate = 0.25; // 25% speed
+        animationRef.current.playbackRate = 0.25;
       } else {
-        animationRef.current.playbackRate = 0.5; // 100% speed
+        animationRef.current.playbackRate = 0.5;
       }
     }
   }, [isHovered, slowDownOnHover, pauseOnHover]);
@@ -89,7 +103,7 @@ export default function Carousel({
         className={`flex w-full h-full mb-5 ${
           direction === "horizontal" ? "flex-row" : "flex-col"
         }`}
-        style={{ gap: gap }}
+        style={{ gap: activeGap }}
       >
         {extendedSlides.map((slide, idx) => (
           <div

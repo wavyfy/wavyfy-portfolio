@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import DarkCTACard from "./DarkCTACard";
+import StatusBadge from "./StatusBadge";
 
 const faqs = [
   {
@@ -58,10 +59,9 @@ export default function FAQ() {
           <div className="flex flex-col h-full">
             {/* Header sticks inside this div only */}
             <div className="flex-1 mb-10">
-              <div className="lg:sticky lg:top-32">
+              <div className="lg:sticky lg:top-32 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-auto">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-                  <span className="text-md font-medium text-gray-700">FAQ</span>
+                  <StatusBadge dotColor="bg-red-500" title="FAQ" />
                 </div>
                 <h2 className="text-4xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-12">
                   <span className="text-gray-900">Technical</span>
@@ -102,11 +102,11 @@ export default function FAQ() {
                     >
                       {faq.question}
                     </h4>
-                    <div className="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center shrink-0 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center shrink-0 transition-colors">
                       {isOpen ? (
-                        <Minus className="w-4 h-4 text-gray-400" />
+                        <Minus className="w-4 h-4 text-gray-500" />
                       ) : (
-                        <Plus className="w-4 h-4 text-gray-400" />
+                        <Plus className="w-4 h-4 text-gray-500" />
                       )}
                     </div>
                   </div>
@@ -116,7 +116,7 @@ export default function FAQ() {
                     className={`transition-all duration-500 ease-in-out overflow-hidden
             ${isOpen ? "max-h-60 opacity-100 m-3" : "max-h-0 opacity-0 "}`}
                   >
-                    <div className="bg-[#f9f9f9] rounded-2xl p-3 border border-gray-200">
+                    <div className="bg-gray-200 rounded-2xl p-3">
                       <p className="text-sm text-gray-600 leading-relaxed font-medium">
                         {faq.answer}
                       </p>

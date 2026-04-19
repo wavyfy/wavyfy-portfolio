@@ -38,7 +38,9 @@ export default function ShowcaseSection() {
             slowDownOnHover={true}
             pauseOnHover={false}
             slideSize="280px"
-            gap="150px" // match gap-6 (24px)
+            gap="20px"
+            gapMd="150px"
+            gapLg="150px"
             slides={slides.map((src, i) => (
               <div
                 key={i}

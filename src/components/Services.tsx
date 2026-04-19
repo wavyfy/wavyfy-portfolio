@@ -1,4 +1,5 @@
 import { ArrowRight, Info } from "lucide-react";
+import StatusBadge from "./StatusBadge";
 
 const services = [
   {
@@ -102,8 +103,7 @@ export default function Services() {
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-            <span className="text-md font-medium text-gray-700">Services</span>
+            <StatusBadge dotColor="bg-red-500" title="Services" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-4">
             <span className="text-gray-900">Pick a service.</span>
@@ -145,11 +145,6 @@ export default function Services() {
                 <div className="flex items-center gap-3 mb-3 flex-col ">
                   <h2 className="text-lg font-regular">{service.title2}</h2>
                   <hr className="w-full border-gray-100/20" />
-                  {/* {service.badge && (
-                    <span className="bg-red-900/30 text-red-600 text-sm font-medium px-3 ml-3 py-1 rounded-full">
-                      {service.badge}
-                    </span>
-                  )} */}
                 </div>
                 <p
                   className={`text-md mr-20 font-medium ${service.theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
@@ -207,11 +202,11 @@ export default function Services() {
                   >
                     <span>Get Started Now</span>
                     <span
-                      className={`flex items-center justify-center w-14 h-9 rounded-lg border mx-2
+                      className={`flex items-center justify-center w-14 h-9 rounded-lg mx-2
                         ${
                           service.theme === "dark"
-                            ? "bg-[#f5f5f5] border-gray-300"
-                            : "bg-[#1f2937] border-gray-500"
+                            ? "bg-gray-200"
+                            : " bg-gray-500"
                         }`}
                     >
                       <ArrowRight

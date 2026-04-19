@@ -24,31 +24,43 @@ export default function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-8">
-          <button className="flex items-center gap-1 text-md font-medium text-gray-800 hover:text-gray-900 transition-colors">
-            Services
+          <button className="group flex items-center gap-1 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+            <span className="relative pb-0.5">
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
+            </span>
             {/* <ChevronDown className="w-3.5 h-3.5" /> */}
           </button>
 
-          <button className="relative flex items-center gap-1.5 text-md font-medium text-gray-800 hover:text-gray-900 transition-colors">
-            Projects
+          <button className="group relative flex items-center gap-1.5 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+            <span className="relative pb-0.5">
+              Projects
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
+            </span>
             {/* <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
               New
             </span> */}
           </button>
 
-          <button className="text-md font-medium text-gray-800 hover:text-gray-900 transition-colors">
-            Our Clients
+          <button className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+            <span className="relative pb-0.5">
+              Our Clients
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
+            </span>
           </button>
 
-          <button className="text-md font-medium text-gray-800 hover:text-gray-900 transition-colors">
-            About Us
+          <button className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+            <span className="relative pb-0.5">
+              About Us
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
+            </span>
           </button>
         </div>
 
         {/* CTA Button */}
         <BookCallButton
           className="hidden md:flex items-center gap-3 bg-[#0B1220] text-white text-xs font-medium pl-4 pr-2 py-2 rounded-xl border border-white/10 hover:bg-[#0f172a] transition-all"
-          iconContainerClassName="w-12 h-6 rounded-lg bg-white/10 border border-white/20"
+          iconContainerClassName="w-12 h-6 rounded-lg bg-white/10 "
           iconClassName="w-4 h-4 text-white"
         />
 

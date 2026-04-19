@@ -1,5 +1,6 @@
 import DarkCTACard from "./DarkCTACard";
 import Image from "next/image";
+import StatusBadge from "./StatusBadge";
 
 const testimonials = [
   {
@@ -169,10 +170,7 @@ export default function Testimonials() {
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-            <span className="text-md font-medium text-gray-700">
-              Testimonials
-            </span>
+            <StatusBadge dotColor="bg-red-500" title="Testimonials" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
             <span className="text-gray-900">Impact Reports.</span>

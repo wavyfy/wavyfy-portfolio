@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-
+import { motion, useScroll, useTransform } from "framer-motion";
+import StatusBadge from "./StatusBadge";
 
 const steps = [
   {
@@ -77,15 +77,13 @@ function ProcessStep({
       </div>
 
       <motion.div
-        className="bg-white rounded-3xl border h-50 border-gray-200 p-4 sm:p-6 mt-6 mb-6 flex-1 shadow-xs"
+        className="bg-white rounded-3xl border h-auto border-gray-200 p-4 sm:p-4 mt-6 mb-6 flex-1 shadow-xs"
         style={{ opacity, y }}
       >
         <h3 className="text-2xl font-medium text-gray-500 mb-5">
           {step.title}
         </h3>
-        <p className="text-md text-gray-700 font-medium">
-          {step.description}
-        </p>
+        <p className="text-md text-gray-700 font-medium bg-gray-200 p-2 sm:p-2 rounded-xl">{step.description}</p>
       </motion.div>
     </div>
   );
@@ -93,48 +91,36 @@ function ProcessStep({
 
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.75", "end 0.5"],
-  });
 
   return (
     <section className="sm:px-4 py-20 md:py-28 md:px-10">
       <div className="max-w-8xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: Label + Heading + Description */}
-          <div className="lg:sticky lg:top-32 self-start">
+          <div className="lg:sticky lg:top-32 self-start flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-auto">
             {/* Section label */}
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-              <span className="text-md font-medium text-gray-700">
-                Process
-              </span>
+              <StatusBadge dotColor="bg-red-500" title="Process" />
             </div>
 
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-6">
-              <span className="text-gray-900">
-                Strategic Execution.
-              </span>
+              <span className="text-gray-900">Strategic Execution.</span>
               <br />
               <span className="text-gray-500">Zero compromises.</span>
             </h2>
 
             {/* Description */}
             <p className="text-base text-gray-800 max-w-md text-[1rem]">
-              We systematically architect, build, and deploy high-conversion systems tailored to your technical requirements.
+              We systematically architect, build, and deploy high-conversion
+              systems tailored to your technical requirements.
             </p>
           </div>
 
           {/* Right: Vertical Timeline */}
-          <div ref={containerRef} className="flex flex-col ">
+          <div ref={containerRef} className="flex flex-col">
             {steps.map((step, index) => (
-              <ProcessStep
-                key={index}
-                step={step}
-                index={index}
-              />
+              <ProcessStep key={index} step={step} index={index} />
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import StatusBadge from "./StatusBadge";
 
 const projects = [
   {
@@ -36,10 +37,7 @@ export default function Projects() {
         <div className="text-center mb-14">
           {/* Label */}
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="w-2.5 h-2.5 bg-red-500 rounded-sm" />
-            <span className="text-md font-medium text-gray-700">
-              Infrastructure
-            </span>
+            <StatusBadge dotColor="bg-red-500" title="Infrastructure" />
           </div>
 
           {/* Heading */}
