@@ -112,7 +112,10 @@ const InfoIcon = ({ className }: { className?: string }) => (
 
 export default function Services() {
   return (
-    <section id="services" className="sm:px-4 py-16 md:py-20 md:px-10">
+    <section
+      id="services"
+      className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto"
+    >
       <div className="max-w-8xl mx-auto">
         {/* Header */}
         <Reveal delay={0.2}>

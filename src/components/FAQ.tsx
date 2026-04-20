@@ -53,7 +53,10 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="sm:px-4 py-16 md:py-20 md:px-10">
+    <section
+      id="faq"
+      className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto"
+    >
       <Reveal delay={0.5}>
         <div className="max-w-8xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-0 items-start">
@@ -109,7 +112,10 @@ export default function FAQ() {
                       >
                         {faq.question}
                       </span>
-                      <span className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center shrink-0 transition-colors" aria-hidden="true">
+                      <span
+                        className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center shrink-0 transition-colors"
+                        aria-hidden="true"
+                      >
                         {isOpen ? (
                           <MinusIcon className="w-4 h-4 text-gray-500" />
                         ) : (

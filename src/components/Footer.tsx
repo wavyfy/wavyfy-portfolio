@@ -159,7 +159,7 @@ const AnimatedLink = ({
 
 export default function Footer() {
   return (
-    <footer className="mb-5">
+    <footer className="mb-5 max-w-360 mx-auto  @container">
       <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-8xl mx-auto pt-14 pb-5 px-4 sm:px-6 md:px-10 flex flex-col items-center relative overflow-hidden shadow-2xl border border-gray-200">
         {/* --- Top CTA Section & Socials --- */}
         <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-12 relative px-4 md:px-8">
@@ -195,11 +195,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h4 className="text-lg font-bold text-gray-900 mb-2">Company</h4>
               {companyLinks.map((link, i) => (
-                <AnimatedLink
-                  key={i}
-                  href={link.href}
-                  label={link.label}
-                />
+                <AnimatedLink key={i} href={link.href} label={link.label} />
               ))}
             </div>
 
@@ -234,9 +230,9 @@ export default function Footer() {
         </div>
 
         {/* Faded background text */}
-        <div className="w-full flex justify-center pointer-events-none select-none mt-10 md:mt-16 sm:-mb-[3%] md:-mb-[3%]">
+        <div className="max-w-8xl flex justify-center pointer-events-none select-none mt-10 md:mt-16 sm:-mb-[3%] md:-mb-[3%] mx-auto">
           <span
-            className="text-[25vw] font-bold text-gray-300 leading-[0.8] tracking-tighter"
+            className=" font-bold text-gray-300 leading-[0.8] tracking-tighter text-[clamp(60px,25cqw,420px)]"
             style={{
               WebkitMaskImage:
                 "linear-gradient(to bottom, black 15%, transparent 95%)",

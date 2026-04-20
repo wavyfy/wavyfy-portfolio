@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full pt-2">
+      <nav className="sticky top-0 z-50 w-full pt-2 max-w-360 mx-auto">
         {/* Placeholder reserving exact height of collapsed island to prevent DOM layout shift */}
         {/* suppressHydrationWarning: browser extensions (e.g. Honey) inject attributes like bis_skin_checked on this div */}
         <div className="h-[58px] w-full pointer-events-none" suppressHydrationWarning />

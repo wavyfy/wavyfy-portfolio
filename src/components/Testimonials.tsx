@@ -108,7 +108,10 @@ const TestimonialCard = ({
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="sm:px-4 py-16 md:py-20 md:px-10">
+    <section
+      id="testimonials"
+      className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto"
+    >
       <Reveal delay={0.2}>
         <div className="max-w-8xl mx-auto">
           {/* Header */}
