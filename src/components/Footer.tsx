@@ -148,7 +148,7 @@ const AnimatedLink = ({
   >
     {icon && icon}
     <span className="flex items-center">
-      <span className="relative pb-0.5">
+      <span className=" pb-0.5">
         {label}
         <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full" />
       </span>
@@ -159,10 +159,10 @@ const AnimatedLink = ({
 
 export default function Footer() {
   return (
-    <footer className="mb-5 max-w-360 mx-auto  @container">
-      <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-8xl mx-auto pt-14 pb-5 px-4 sm:px-6 md:px-10 flex flex-col items-center relative overflow-hidden shadow-2xl border border-gray-200">
+    <footer className="mb-5 max-w-360 mx-auto  @container relative">
+      <div className="bg-white rounded-[24px] md:rounded-[32px]  pt-14 pb-5 px-4 sm:px-6 md:px-10  flex flex-col items-center overflow-hidden shadow-2xl border border-gray-200">
         {/* --- Top CTA Section & Socials --- */}
-        <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-12 relative px-4 md:px-8">
+        <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-12 px-4 md:px-8">
           <div className="flex flex-col items-center xl:items-start text-center xl:text-left w-full xl:w-auto">
             <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold leading-[0.8] tracking-tight">
               <span className="text-gray-900 text-3xl sm:text-4xl lg:text-[2.4rem]">
@@ -245,7 +245,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Base Row */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 relative z-10">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 z-10">
           <div className="flex items-center gap-8">
             {legalLinks.map((link, i) => (
               <AnimatedLink

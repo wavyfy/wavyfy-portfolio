@@ -15,6 +15,7 @@ type CarouselProps = {
   gapMd?: string;
   gapLg?: string;
   className?: string;
+  onSlideChange?: (index: number) => void;
 };
 
 export default function Carousel({

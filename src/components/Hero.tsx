@@ -8,8 +8,11 @@ import { Stagger, staggerItem } from "./Stagger";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden pb-0 md:pb-28 max-w-360 mx-auto h">
-      <div className="relative max-w-8xl mx-auto px-2 sm:px-4 pt-5 pb-0 ">
+    <section
+      id="hero"
+      className="relative overflow-hidden pb-0 md:pb-28 max-w-360 mx-auto"
+    >
+      <div className= "max-w-8xl mx-auto px-2 sm:px-4 pt-5 pb-0 ">
         <Stagger delay={0.5} stagger={0.8} duration={1}>
           {/* Center Content */}
           <motion.div

@@ -114,7 +114,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto"
+      className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto relative"
     >
       <div className="max-w-8xl mx-auto">
         {/* Header */}

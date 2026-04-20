@@ -99,7 +99,7 @@ export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="process" className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto">
+    <section id="process" className="sm:px-4 py-16 md:py-20 md:px-10 max-w-360 mx-auto relative">
       <Reveal>
         <div className="max-w-8xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">

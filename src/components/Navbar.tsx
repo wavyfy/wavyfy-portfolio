@@ -8,19 +8,42 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavClick =
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      let timeout: ReturnType<typeof setTimeout>;
+
+      const handleScroll = () => {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+          setIsMobileMenuOpen(false);
+          window.removeEventListener("scroll", handleScroll);
+        }, 120);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+    };
+
   return (
     <>
       <nav className="sticky top-0 z-50 w-full pt-2 max-w-360 mx-auto">
-        {/* Placeholder reserving exact height of collapsed island to prevent DOM layout shift */}
-        {/* suppressHydrationWarning: browser extensions (e.g. Honey) inject attributes like bis_skin_checked on this div */}
-        <div className="h-[58px] w-full pointer-events-none" suppressHydrationWarning />
-
-        {/* Main Navbar Container that expands natively out of doc flow */}
-        {/* suppressHydrationWarning: Framer Motion's animate prop sets inline border-radius styles client-side
-             that are absent from the SSR output (which only has the rounded-[20px] class) */}
+        <div
+          className="h-[58px] w-full pointer-events-none"
+          suppressHydrationWarning
+        />
         <motion.div
           suppressHydrationWarning
-          className="absolute top-2 inset-x-4 mx-auto w-auto max-w-6xl flex flex-col rounded-[20px] bg-white shadow-lg border border-gray-200 overflow-hidden"
+          className="absolute top-2 inset-x-4 mx-auto w-auto max-w-6xl flex flex-col rounded-[20px] bg-white shadow-sm border border-gray-200 overflow-hidden"
           animate={{ borderRadius: isMobileMenuOpen ? "28px" : "16px" }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
@@ -33,7 +56,7 @@ export default function Navbar() {
                 alt="Wavyfy"
                 width={48}
                 height={48}
-                sizes="48px"
+                sizes="38px"
                 priority
                 className="h-12 w-auto"
               />
@@ -44,28 +67,40 @@ export default function Navbar() {
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#services" className="group flex items-center gap-1 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+              <a
+                href="#services"
+                className="group flex items-center gap-1 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
+              >
                 <span className="relative pb-0.5">
                   Services
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
                 </span>
               </a>
 
-              <a href="#projects" className="group relative flex items-center gap-1.5 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+              <a
+                href="#projects"
+                className="group relative flex items-center gap-1.5 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
+              >
                 <span className="relative pb-0.5">
                   Projects
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
                 </span>
               </a>
 
-              <a href="#testimonials" className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+              <a
+                href="#testimonials"
+                className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
+              >
                 <span className="relative pb-0.5">
                   Our Clients
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
                 </span>
               </a>
 
-              <a href="#process" className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+              <a
+                href="#process"
+                className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
+              >
                 <span className="relative pb-0.5">
                   Process
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
@@ -90,9 +125,15 @@ export default function Navbar() {
               aria-expanded={isMobileMenuOpen}
             >
               <div className="flex flex-col justify-between w-[20px] h-[12px] relative transform transition-all duration-300 origin-center">
-                <span className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? 'w-[20px] rotate-45 top-[5px]' : 'w-[20px] top-0 group-hover:w-[24px]'}`} />
-                <span className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? 'w-0 opacity-0 top-[5px]' : 'w-[14px] top-[5px] group-hover:w-[10px]'}`} />
-                <span className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? 'w-[20px] -rotate-45 top-[5px]' : 'w-[18px] top-[10px] group-hover:w-[22px]'}`} />
+                <span
+                  className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? "w-[20px] rotate-45 top-[5px]" : "w-[20px] top-0 group-hover:w-[24px]"}`}
+                />
+                <span
+                  className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? "w-0 opacity-0 top-[5px]" : "w-[14px] top-[5px] group-hover:w-[10px]"}`}
+                />
+                <span
+                  className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? "w-[20px] -rotate-45 top-[5px]" : "w-[18px] top-[10px] group-hover:w-[22px]"}`}
+                />
               </div>
             </button>
           </div>
@@ -111,32 +152,29 @@ export default function Navbar() {
                 {/* Content wrapper isolates internal padding from height calculation jumping */}
                 <div className="flex flex-col gap-[34px] px-5 pb-6 pt-6">
                   {/* Internal Links Map */}
+
                   <div className="flex flex-col gap-8 mt-1 px-1">
-                    <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between text-left group">
-                      <span className="text-[17px] font-semibold text-gray-900">
-                        Services
-                      </span>
-                    </a>
-
-                    <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between text-left group">
-                      <div className="flex items-center gap-2">
+                    {[
+                      { label: "Services", id: "services" },
+                      { label: "Projects", id: "projects" },
+                      { label: "Our Clients", id: "testimonials" },
+                      { label: "Process", id: "process" },
+                    ].map((item, i) => (
+                      <a
+                        key={i}
+                        href={`#${item.id}`}
+                        onClick={
+                          item.id
+                            ? handleNavClick(item.id)
+                            : () => setIsMobileMenuOpen(false)
+                        }
+                        className="flex items-center justify-between text-left group"
+                      >
                         <span className="text-[17px] font-semibold text-gray-900">
-                          Projects
+                          {item.label}
                         </span>
-                      </div>
-                    </a>
-
-                    <a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-left group">
-                      <span className="text-[17px] font-semibold text-gray-900">
-                        Our Clients
-                      </span>
-                    </a>
-
-                    <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-left group">
-                      <span className="text-[17px] font-semibold text-gray-900">
-                        About Us
-                      </span>
-                    </a>
+                      </a>
+                    ))}
                   </div>
 
                   {/* Mobile Internal Bottom CTA Button */}
