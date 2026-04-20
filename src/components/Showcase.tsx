@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Carousel from "./Carousel";
 import { Reveal } from "./Reveal";
@@ -13,7 +11,7 @@ const slides = [
 export default function ShowcaseSection() {
   return (
     <section className="max-w-360 mx-auto px-0 sm:px-6 md:px-10 w-full pb-16 md:pb-20">
-      <Reveal delay={1.5} duration={2}>
+      <Reveal delay={1} duration={2}>
         <div className="rounded-[20px] sm:rounded-[24px] p-4 shadow-sm border border-gray-100 flex flex-col gap-1">
           {/* Carousel Area */}
           <div className="relative py-4 sm:py-3">
@@ -52,6 +50,7 @@ export default function ShowcaseSection() {
                       alt={`Slide ${i}`}
                       fill
                       sizes="300px"
+                      priority={i === 0}
                       className="object-cover opacity-100 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
                     />
                   </div>

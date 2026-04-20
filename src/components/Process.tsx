@@ -56,6 +56,7 @@ function ProcessStep({
       {/* Number + Vertical Line */}
       <div className="flex flex-col items-center">
         <motion.span
+          suppressHydrationWarning
           className="text-lg font-semibold text-gray-800 mb-2 border border-gray-300 h-10 w-10 rounded-full flex items-center justify-center"
           style={{ opacity }}
         >
@@ -68,6 +69,7 @@ function ProcessStep({
             <div className="absolute inset-0 bg-gray-200 rounded-full" />
             {/* Red fill (scroll-linked) */}
             <motion.div
+              suppressHydrationWarning
               className="absolute inset-0 bg-red-400 rounded-full origin-top"
               style={{ scaleY: lineScaleY }}
             />
@@ -78,6 +80,7 @@ function ProcessStep({
       </div>
 
       <motion.div
+        suppressHydrationWarning
         className="bg-white rounded-3xl border h-auto border-gray-200 p-4 sm:p-4 mt-6 mb-6 flex-1 shadow-xs"
         style={{ opacity, y }}
       >
@@ -96,7 +99,7 @@ export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="sm:px-4 py-16 md:py-20 md:px-10">
+    <section id="process" className="sm:px-4 py-16 md:py-20 md:px-10">
       <Reveal>
         <div className="max-w-8xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">

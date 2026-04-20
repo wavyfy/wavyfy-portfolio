@@ -10,10 +10,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 flex flex-col items-center justify-center px-4 pt-2">
-        {/* Main Navbar Container that expands into a card natively */}
+      <nav className="sticky top-0 z-50 w-full pt-2">
+        {/* Placeholder reserving exact height of collapsed island to prevent DOM layout shift */}
+        {/* suppressHydrationWarning: browser extensions (e.g. Honey) inject attributes like bis_skin_checked on this div */}
+        <div className="h-[58px] w-full pointer-events-none" suppressHydrationWarning />
+
+        {/* Main Navbar Container that expands natively out of doc flow */}
+        {/* suppressHydrationWarning: Framer Motion's animate prop sets inline border-radius styles client-side
+             that are absent from the SSR output (which only has the rounded-[20px] class) */}
         <motion.div
-          className="relative z-50 flex w-full max-w-6xl flex-col rounded-[20px] bg-white shadow-lg border border-gray-200 overflow-hidden"
+          suppressHydrationWarning
+          className="absolute top-2 inset-x-4 mx-auto w-auto max-w-6xl flex flex-col rounded-[20px] bg-white shadow-lg border border-gray-200 overflow-hidden"
           animate={{ borderRadius: isMobileMenuOpen ? "28px" : "16px" }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
@@ -27,6 +34,7 @@ export default function Navbar() {
                 width={48}
                 height={48}
                 sizes="48px"
+                priority
                 className="h-12 w-auto"
               />
               <p className="text-xl font-semibold tracking-tight text-gray-900">
@@ -57,9 +65,9 @@ export default function Navbar() {
                 </span>
               </a>
 
-              <a href=" " className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
+              <a href="#process" className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500">
                 <span className="relative pb-0.5">
-                  About Us
+                  Process
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
                 </span>
               </a>
@@ -92,6 +100,7 @@ export default function Navbar() {
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
+                suppressHydrationWarning
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0, transition: { duration: 0.4 } }}
@@ -149,6 +158,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            suppressHydrationWarning
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.4 } }}

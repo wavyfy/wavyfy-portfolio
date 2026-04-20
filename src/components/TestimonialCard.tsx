@@ -9,9 +9,11 @@ export default function TestimonialCard({
   quote,
   author,
   className = "",
+  style,
 }: TestimonialCardProps) {
   return (
     <div
+      style={style}
       className={`bg-white rounded-2xl p-5 border border-gray-100 max-w-[400px] ${className}`}
     >
       {/* Quote mark */}

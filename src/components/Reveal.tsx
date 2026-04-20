@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ease } from "./Stagger";
 
 type RevealProps = {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export function Reveal({
 }: RevealProps) {
   return (
     <motion.div
+      suppressHydrationWarning
       initial={{
         opacity: 0,
         y,
@@ -48,3 +50,21 @@ export function Reveal({
     </motion.div>
   );
 }
+
+export const reveal = (delay = 0) => ({
+  hidden: {
+    opacity: 0,
+    y: 40,
+    filter: "blur(6px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      delay,
+      ease,
+    },
+  },
+});

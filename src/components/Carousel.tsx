@@ -49,7 +49,8 @@ export default function Carousel({
     return () => window.removeEventListener("resize", updateGap);
   }, [gap, gapSm, gapMd, gapLg]);
 
-  const extendedSlides = [...slides, ...slides, ...slides];
+  // 2 copies sufficient for seamless infinite loop (animation cycles exactly 1 set distance)
+  const extendedSlides = [...slides, ...slides];
 
   useEffect(() => {
     if (!containerRef.current) return;

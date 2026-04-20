@@ -1,6 +1,10 @@
-import { ArrowRight, Info } from "lucide-react";
+"use client";
+
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import StatusBadge from "./StatusBadge";
 import { Reveal } from "./Reveal";
+import { staggerItemDelayed } from "./Stagger";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -62,6 +66,9 @@ const services = [
   },
 ];
 
+// middle=0 (first), left=1 (second), right=2 (third)
+const staggerOrder = [1, 0, 2];
+
 const FeatureIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -86,43 +93,56 @@ const FeatureIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// const ServiceIconBox = ({ theme }: { theme: string }) => (
-//   <div
-//     className={`w-10 h-10 rounded-xl flex items-center justify-center border mb-6
-//       ${theme === "dark" ? "bg-[#181b21] border-gray-800" : "bg-[#f5f5f5] border-gray-200"}`}
-//   >
-//     <div
-//       className={`w-2.5 h-2.5 rounded-sm ${theme === "dark" ? "bg-gray-600" : "bg-gray-400"}`}
-//     />
-//   </div>
-// );
+// Inline replacement for lucide-react Info icon
+const InfoIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="16" x2="12" y2="12" />
+    <line x1="12" y1="8" x2="12.01" y2="8" />
+  </svg>
+);
 
 export default function Services() {
   return (
     <section id="services" className="sm:px-4 py-16 md:py-20 md:px-10">
-      <Reveal delay={0.5}>
-        <div className="max-w-8xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <StatusBadge dotColor="bg-red-500" title="Services" />
+        <Reveal delay={0.2}>
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="flex items-center gap-2 mb-4">
+              <StatusBadge dotColor="bg-red-500" title="Services" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-4">
+              <span className="text-gray-900">Pick a service.</span>
+              <br />
+              <span className="text-gray-500">Built around your goals.</span>
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto leading-relaxed">
+              From Shopify stores to full SaaS platforms — we build digital
+              products that perform, scale, and convert.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-4">
-            <span className="text-gray-900">Pick a service.</span>
-            <br />
-            <span className="text-gray-500">Built around your goals.</span>
-          </h2>
-          <p className="text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto leading-relaxed">
-            From Shopify stores to full SaaS platforms — we build digital
-            products that perform, scale, and convert.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           {services.map((service, i) => (
-            <div
+            <motion.div
+              suppressHydrationWarning
               key={i}
+              variants={staggerItemDelayed}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.1 }}
+              custom={staggerOrder[i]}
               className={`rounded-3xl p-2 flex flex-col border shadow-xl h-full transition-transform
                 ${i === 1 ? "scale-100 lg:scale-97" : "scale-100 lg:scale-93"}
                 ${
@@ -140,11 +160,10 @@ export default function Services() {
                       : "bg-white shadow-lg border border-gray-200"
                   }`}
               >
-                {/* <ServiceIconBox theme={service.theme} /> */}
                 <h2 className="text-2xl font-semibold text-center">
                   {service.title1}
                 </h2>
-                <div className="flex items-center gap-3 mb-3 flex-col ">
+                <div className="flex items-center gap-3 mb-3 flex-col">
                   <h2 className="text-lg font-regular">{service.title2}</h2>
                   <hr className="w-full border-gray-100/20" />
                 </div>
@@ -185,7 +204,7 @@ export default function Services() {
                         {feature.text}
                       </span>
                       {feature.info && (
-                        <Info
+                        <InfoIcon
                           className={`w-3.5 h-3.5 ${service.theme === "dark" ? "text-gray-600" : "text-gray-400"}`}
                         />
                       )}
@@ -195,34 +214,27 @@ export default function Services() {
 
                 <div className="mt-auto">
                   <button
-                    className={`w-full flex items-center justify-between py-4 pl-6 pr-2 rounded-xl font-medium transition-all
-                      ${
-                        service.theme === "dark"
-                          ? "bg-white text-gray-900 hover:bg-gray-100"
-                          : "bg-[#0b1015] text-white hover:bg-gray-900"
-                      }`}
+                    className={`group w-full flex items-center justify-between py-4 pl-6 pr-2 rounded-xl font-medium transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${
+                      service.theme === "dark"
+                        ? "bg-white text-gray-900 hover:bg-gray-100"
+                        : "bg-[#0b1015] text-white hover:bg-gray-900"
+                    }`}
                   >
-                    <span>Get Started Now</span>
+                    Get Started Now
                     <span
-                      className={`flex items-center justify-center w-14 h-9 rounded-lg mx-2
-                        ${
-                          service.theme === "dark"
-                            ? "bg-gray-200"
-                            : " bg-gray-500"
-                        }`}
+                      className={`flex items-center justify-center w-14 h-9 rounded-lg mx-2 ${service.theme === "dark" ? "bg-gray-200" : "bg-gray-500"}`}
                     >
-                      <ArrowRight
-                        className={`w-5 h-5 ${service.theme === "dark" ? "text-gray-900" : "text-white"}`}
+                      <ArrowRightIcon
+                        className={`w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-2 ${service.theme === "dark" ? "text-gray-900" : "text-white"}`}
                       />
                     </span>
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-      </Reveal>
     </section>
   );
 }

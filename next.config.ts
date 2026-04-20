@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["@radix-ui/react-icons", "framer-motion"],
+  },
   images: {
     remotePatterns: [
       {
@@ -11,7 +14,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "framerusercontent.com",
       },
-      
     ],
   },
 };

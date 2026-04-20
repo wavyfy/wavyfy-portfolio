@@ -1,14 +1,17 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
-import BlurOverlay from "@/components/BlurOverlay";
 import Hero from "@/components/Hero";
 import Showcase from "@/components/Showcase";
-import Projects from "@/components/Projects";
-import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
-import Services from "@/components/Services";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
-// import { Reveal } from "@/components/Reveal";
+
+// Below-fold sections — dynamically imported so their JS ships in separate chunks,
+// reducing the initial JS payload for first paint. SSR is kept (default) for SEO.
+const Projects = dynamic(() => import("@/components/Projects"));
+const Process = dynamic(() => import("@/components/Process"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const Services = dynamic(() => import("@/components/Services"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
+const BlurOverlay = dynamic(() => import("@/components/BlurOverlay"));
 
 export default function Home() {
   return (
