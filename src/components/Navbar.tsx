@@ -87,6 +87,7 @@ export default function Navbar() {
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <div className="flex flex-col justify-between w-[20px] h-[12px] relative transform transition-all duration-300 origin-center">
                 <span className={`absolute right-0 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-out ${isMobileMenuOpen ? 'w-[20px] rotate-45 top-[5px]' : 'w-[20px] top-0 group-hover:w-[24px]'}`} />

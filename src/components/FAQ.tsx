@@ -53,7 +53,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="sm:px-4 py-16 md:py-20 md:px-10">
+    <section id="faq" className="sm:px-4 py-16 md:py-20 md:px-10">
       <Reveal delay={0.5}>
         <div className="max-w-8xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-0 items-start">
@@ -91,32 +91,40 @@ export default function FAQ() {
                 return (
                   <div
                     key={index}
-                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className={`bg-white border rounded-3xl border-gray-200 cursor-pointer transition-all duration-500 ease-in-out overflow-hidden
+                    className={`bg-white border rounded-3xl border-gray-200 transition-all duration-500 ease-in-out overflow-hidden
           ${isOpen ? "" : " hover:border-gray-300"}`}
                   >
-                    {/* Top Row: Question + Icon */}
-                    <div className="flex items-center justify-between px-4 md:px-6 py-4 md:py-5 select-none">
-                      <h4
+                    {/* Top Row: Question + Icon — keyboard + screen reader accessible trigger */}
+                    <button
+                      className="flex items-center justify-between w-full text-left px-4 md:px-6 py-4 md:py-5 select-none cursor-pointer"
+                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      id={`faq-question-${index}`}
+                    >
+                      <span
                         className={`text-[16px] font-semibold transition-colors ${
                           isOpen ? "text-gray-900" : "text-gray-500"
                         }`}
                       >
                         {faq.question}
-                      </h4>
-                      <div className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center shrink-0 transition-colors">
+                      </span>
+                      <span className="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center shrink-0 transition-colors" aria-hidden="true">
                         {isOpen ? (
                           <MinusIcon className="w-4 h-4 text-gray-500" />
                         ) : (
                           <PlusIcon className="w-4 h-4 text-gray-500" />
                         )}
-                      </div>
-                    </div>
+                      </span>
+                    </button>
 
                     {/* Expanded Content */}
                     <div
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${index}`}
                       className={`transition-all duration-500 ease-in-out overflow-hidden
-            ${isOpen ? "max-h-60 opacity-100 m-3" : "max-h-0 opacity-0 "}`}
+            ${isOpen ? "max-h-60 opacity-100 m-3" : "max-h-0 opacity-0"}`}
                     >
                       <div className="bg-gray-200 rounded-2xl p-3">
                         <p className="text-sm text-gray-600 leading-relaxed font-medium">

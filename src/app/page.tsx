@@ -25,7 +25,7 @@ export default function Home() {
       <Services />
       <FAQ />
       <Footer />
-      <BlurOverlay />
+      <BlurOverlay  />
     </main>
   );
 }

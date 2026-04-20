@@ -84,7 +84,7 @@ export default function Projects() {
                       <div className="rounded-[16px] overflow-hidden bg-black flex-1 relative group cursor-pointer">
                         <Image
                           src={project.image}
-                          alt={project.name}
+                          alt={`${project.name} – ${project.tags.join(", ")}`}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] scale-105 group-hover:scale-100 opacity-100"

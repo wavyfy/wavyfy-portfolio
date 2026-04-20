@@ -8,14 +8,14 @@ import { Stagger, staggerItem } from "./Stagger";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-0 pb-0 md:pt-0 md:pb-28">
+    <section id="hero" className="relative overflow-hidden pt-0 pb-0 md:pt-0 md:pb-28">
       <div className="relative max-w-8xl mx-auto px-2 sm:px-4 pt-5 pb-0">
         <Stagger delay={0.5} stagger={0.8} duration={1.2}>
           {/* Center Content */}
           <motion.div
             suppressHydrationWarning
             variants={staggerItem}
-            className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto p-7 md:pt-18 md:pb-10"
+            className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto p-7 md:pt-25 md:pb-5"
           >
             <div className="flex justify-center">
               <StatusBadge className="mb-5" />
@@ -42,12 +42,12 @@ export default function Hero() {
           <motion.div
             suppressHydrationWarning
             variants={staggerItem}
-            custom={1.5}
+            custom={1.2}
             className="absolute inset-0 pointer-events-none"
           >
             {/* Left Side */}
             <div
-              className="hidden lg:block absolute left-4 xl:left-8 top-0 w-58 space-y-3 pointer-events-auto"
+              className="hidden lg:block absolute left-4 xl:left-8 top-5 w-70 space-y-5 pointer-events-auto"
               style={{ perspective: "1800px", transformStyle: "preserve-3d" }}
             >
               <TestimonialCard
@@ -99,7 +99,7 @@ export default function Hero() {
 
             {/* Right Side */}
             <div
-              className="hidden lg:block absolute right-4 xl:right-8 top-0 w-58 space-y-3 pointer-events-auto"
+              className="hidden lg:block absolute right-4 xl:right-8 top-5 w-70 space-y-5 pointer-events-auto"
               style={{ perspective: "1800px", transformStyle: "preserve-3d" }}
             >
               <TestimonialCard

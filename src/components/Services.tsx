@@ -160,11 +160,11 @@ export default function Services() {
                       : "bg-white shadow-lg border border-gray-200"
                   }`}
               >
-                <h2 className="text-2xl font-semibold text-center">
+                <h3 className="text-2xl font-semibold text-center">
                   {service.title1}
-                </h2>
+                </h3>
                 <div className="flex items-center gap-3 mb-3 flex-col">
-                  <h2 className="text-lg font-regular">{service.title2}</h2>
+                  <p className="text-lg font-medium">{service.title2}</p>
                   <hr className="w-full border-gray-100/20" />
                 </div>
                 <p

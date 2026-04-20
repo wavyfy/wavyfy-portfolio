@@ -2,10 +2,19 @@ import Image from "next/image";
 import Carousel from "./Carousel";
 import { Reveal } from "./Reveal";
 
-const slides = [
-  "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png",
-  "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png",
-  "https://framerusercontent.com/images/MAVstedJYqQvsrJ7l1kxjR498.jpg",
+const slides: { src: string; alt: string }[] = [
+  {
+    src: "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png",
+    alt: "Quantum Finance – UI design and brand identity dashboard",
+  },
+  {
+    src: "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png",
+    alt: "Nexus Core – fintech UX design platform interface",
+  },
+  {
+    src: "https://framerusercontent.com/images/MAVstedJYqQvsrJ7l1kxjR498.jpg",
+    alt: "Wavyfy client project – web design and SaaS development showcase",
+  },
 ];
 
 export default function ShowcaseSection() {
@@ -39,7 +48,7 @@ export default function ShowcaseSection() {
               slideSize="380px"
               gap="20px"
               gapLg="50px"
-              slides={slides.map((src, i) => (
+              slides={slides.map(({ src, alt }, i) => (
                 <div
                   key={i}
                   className="rounded-[20px] p-2 bg-white/80 border border-gray-200 shadow-lg flex-1 flex flex-col w-full h-[300px] sm:h-[300px] sm:w-[400px]"
@@ -47,7 +56,7 @@ export default function ShowcaseSection() {
                   <div className="rounded-[16px] overflow-hidden bg-black flex-1 relative group cursor-pointer">
                     <Image
                       src={src}
-                      alt={`Slide ${i}`}
+                      alt={alt}
                       fill
                       sizes="300px"
                       priority={i === 0}

@@ -127,7 +127,6 @@ const legalLinks = [
   { label: "Refund Policy", href: "#" },
 ];
 
-// Reusable animated link
 const AnimatedLink = ({
   href,
   label,
@@ -160,10 +159,10 @@ const AnimatedLink = ({
 
 export default function Footer() {
   return (
-    <footer className="pb-5 z-50">
-      <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-8xl mx-auto pt-24 pb-8 px-4 sm:px-6 md:px-10 flex flex-col items-center relative overflow-hidden shadow-2xl border border-gray-200">
+    <footer className="mb-5">
+      <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-8xl mx-auto pt-14 pb-5 px-4 sm:px-6 md:px-10 flex flex-col items-center relative overflow-hidden shadow-2xl border border-gray-200">
         {/* --- Top CTA Section & Socials --- */}
-        <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-12 z-10 relative px-4 md:px-8">
+        <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-12 relative px-4 md:px-8">
           <div className="flex flex-col items-center xl:items-start text-center xl:text-left w-full xl:w-auto">
             <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold leading-[0.8] tracking-tight">
               <span className="text-gray-900 text-3xl sm:text-4xl lg:text-[2.4rem]">
@@ -235,7 +234,7 @@ export default function Footer() {
         </div>
 
         {/* Faded background text */}
-        <div className="w-full flex justify-center pointer-events-none select-none z-0 mt-10 md:mt-16 sm:-mb-[3%] md:-mb-[5%]">
+        <div className="w-full flex justify-center pointer-events-none select-none mt-10 md:mt-16 sm:-mb-[3%] md:-mb-[3%]">
           <span
             className="text-[25vw] font-bold text-gray-300 leading-[0.8] tracking-tighter"
             style={{
@@ -250,7 +249,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Base Row */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 z-20 relative">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-0 relative z-10">
           <div className="flex items-center gap-8">
             {legalLinks.map((link, i) => (
               <AnimatedLink
