@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import BookCallButton from "./BookCallButton";
+import { content } from "@/content/content";
 
 interface DarkCTACardProps {
   className?: string;
@@ -35,18 +36,20 @@ export default function DarkCTACard({
       <div className="relative z-10 grow">
         {children || (
           <p className="text-2xl md:text-3xl font-medium tracking-tight leading-tightest">
-            <span className="text-white">{text?.line1 ?? "You command "}</span>
+            <span className="text-white">
+              {text?.line1 ?? content.cta.defaultCard.line1}
+            </span>
             <span className="text-gray-500">the</span>
             <br />
             <span className="text-gray-500">
-              {text?.line2 ?? "market."}
+              {text?.line2 ?? content.cta.defaultCard.line2}
             </span>
             <br />
-            <span className="text-gray-500">We engineer </span>
-            <span className="text-white">{text?.line3 ?? "the systems"}</span>
-            <br />
+            <span className="text-gray-500">
+              {text?.line3 ?? content.cta.defaultCard.line3}
+            </span>
             <span className="text-white font-semibold mt-1 block">
-              {text?.highlight ?? "that make it possible."}
+              {text?.highlight ?? content.cta.defaultCard.highlight}
             </span>
           </p>
         )}

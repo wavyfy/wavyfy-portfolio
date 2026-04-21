@@ -5,6 +5,8 @@ import Image from "next/image";
 import BookCallButton from "./BookCallButton";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { content } from "@/content/content";
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -53,7 +55,7 @@ export default function Navbar() {
             <div className="flex items-center gap-1.5 pl-2">
               <Image
                 src="/logo-icon.png"
-                alt="Wavyfy"
+                alt={content.navbar.logo}
                 width={48}
                 height={48}
                 sizes="38px"
@@ -61,51 +63,24 @@ export default function Navbar() {
                 className="h-12 w-auto"
               />
               <p className="text-xl font-semibold tracking-tight text-gray-900">
-                Wavyfy
+                {content.navbar.logo}
               </p>
             </div>
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
-              <a
-                href="#services"
-                className="group flex items-center gap-1 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
-              >
-                <span className="relative pb-0.5">
-                  Services
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
-                </span>
-              </a>
-
-              <a
-                href="#projects"
-                className="group relative flex items-center gap-1.5 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
-              >
-                <span className="relative pb-0.5">
-                  Projects
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
-                </span>
-              </a>
-
-              <a
-                href="#testimonials"
-                className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
-              >
-                <span className="relative pb-0.5">
-                  Our Clients
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
-                </span>
-              </a>
-
-              <a
-                href="#process"
-                className="group text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
-              >
-                <span className="relative pb-0.5">
-                  Process
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
-                </span>
-              </a>
+              {content.navbar.links.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className="group flex items-center gap-1 text-md font-medium text-gray-800 hover:text-[#de5145] transition-all duration-500"
+                >
+                  <span className="relative pb-0.5">
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#de5145] transition-all duration-500 group-hover:w-full"></span>
+                  </span>
+                </a>
+              ))}
             </div>
 
             {/* Desktop CTA Button */}
@@ -154,12 +129,7 @@ export default function Navbar() {
                   {/* Internal Links Map */}
 
                   <div className="flex flex-col gap-8 mt-1 px-1">
-                    {[
-                      { label: "Services", id: "services" },
-                      { label: "Projects", id: "projects" },
-                      { label: "Our Clients", id: "testimonials" },
-                      { label: "Process", id: "process" },
-                    ].map((item, i) => (
+                    {content.navbar.links.map((item, i) => (
                       <a
                         key={i}
                         href={`#${item.id}`}
@@ -180,7 +150,7 @@ export default function Navbar() {
                   {/* Mobile Internal Bottom CTA Button */}
                   <div className="mt-4">
                     <BookCallButton
-                      text="Book A Call"
+                      text={content.navbar.cta}
                       className="w-full bg-[#080d17] rounded-[24px] p-[6px] pl-[20px] flex items-center justify-between text-white group hover:bg-[#111A2B] transition-colors shadow-lg shadow-black/10"
                       iconContainerClassName="w-[54px] h-[46px] rounded-[18px] bg-[#222938] group-hover:bg-[#2A3346] transition-colors"
                       iconClassName="w-5 h-5 text-gray-300 group-hover:translate-x-1 transition-transform"

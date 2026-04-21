@@ -5,32 +5,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import StatusBadge from "./StatusBadge";
 import { Reveal } from "./Reveal";
 
-const steps = [
-  {
-    number: "01",
-    title: "Audit & Analysis",
-    description:
-      "Deep-dive diagnostics into your current architecture and market positioning.",
-  },
-  {
-    number: "02",
-    title: "Architectural Design",
-    description:
-      "Crafting the blueprint for a scalable, high-performance user experience.",
-  },
-  {
-    number: "03",
-    title: "Precision Development",
-    description:
-      "Deploying robust, battle-tested code built with modern stacks.",
-  },
-  {
-    number: "04",
-    title: "Performance Scaling",
-    description:
-      "Continuous optimization to ensure your product leads, never follows.",
-  },
-];
+import { content } from "@/content/content";
+
+const steps = content.process.steps;
 
 function ProcessStep({
   step,
@@ -112,15 +89,14 @@ export default function Process() {
 
               {/* Heading */}
               <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-6">
-                <span className="text-gray-900">Strategic Execution.</span>
+                <span className="text-gray-900">{content.process.title}</span>
                 <br />
-                <span className="text-gray-500">Zero compromises.</span>
+                <span className="text-gray-500">{content.process.subtitle}</span>
               </h2>
 
               {/* Description */}
               <p className="text-base text-gray-800 max-w-md text-[1rem]">
-                We systematically architect, build, and deploy high-conversion
-                systems tailored to your technical requirements.
+                {content.process.description}
               </p>
             </div>
 

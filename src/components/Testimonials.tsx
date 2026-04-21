@@ -7,60 +7,9 @@ import { Reveal } from "./Reveal";
 import { Stagger, staggerItem } from "./Stagger";
 import { motion } from "framer-motion";
 
-const testimonials = [
-  {
-    id: 1,
-    metric: "3.5x",
-    title: "increase in platform throughput",
-    quote:
-      "Their architectural choices drastically improved our data layer capacity. The system now handles 3.5x the volume without any latency spikes. Exceptional engineering.",
-    author: "Sarah Coleman",
-    role: "CTO",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+import { content } from "@/content/content";
 
-    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
-  },
-  {
-    id: 2,
-    metric: "100ms",
-    title: "latency reduction across core APIs",
-    quote:
-      "The precision with which they execute is rare. We cut 100ms off our core API responses, leading to an immediate boost in user retention and server efficiency.",
-    author: "Amina Khatri",
-    role: "VP of Engineering",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-
-    spanClass: "md:col-span-2 lg:col-span-2 lg:row-span-2",
-  },
-  {
-    id: 3,
-    metric: "Zero",
-    title: "downtime during major migration",
-    quote:
-      "They architected and executed our v3 migration flawlessly. Moving a massive active user base with zero downtime requires a team that truly understands infrastructure routing and redundancy.",
-    author: "Marcus Levine",
-    role: "Co-founder & Architect",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-
-    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
-  },
-  {
-    id: 4,
-    metric: "4x",
-    title: "faster build pipelines",
-    quote:
-      "By optimizing our container configurations and caching strategies, they slashed our CI/CD pipeline times entirely. Our developers are now shipping code 4x faster.",
-    author: "Julian Ortega",
-    role: "Head of Infrastructure",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-
-    spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
-  },
-];
+const testimonials = content.testimonials.list;
 
 const TestimonialCard = ({
   testimonial,
@@ -120,10 +69,10 @@ export default function Testimonials() {
               <StatusBadge dotColor="bg-red-500" title="Testimonials" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
-              <span className="text-gray-900">Impact Reports.</span>
+              <span className="text-gray-900">{content.testimonials.title}</span>
               <br />
               <span className="text-gray-500">
-                Measurable technical output.
+                {content.testimonials.subtitle}
               </span>
             </h2>
           </div>

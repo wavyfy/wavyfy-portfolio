@@ -2,20 +2,9 @@ import Image from "next/image";
 import Carousel from "./Carousel";
 import { Reveal } from "./Reveal";
 
-const slides: { src: string; alt: string }[] = [
-  {
-    src: "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png",
-    alt: "Quantum Finance – UI design and brand identity dashboard",
-  },
-  {
-    src: "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png",
-    alt: "Nexus Core – fintech UX design platform interface",
-  },
-  {
-    src: "https://framerusercontent.com/images/MAVstedJYqQvsrJ7l1kxjR498.jpg",
-    alt: "Wavyfy client project – web design and SaaS development showcase",
-  },
-];
+import { content } from "@/content/content";
+
+const slides = content.showcase.slides;
 
 export default function ShowcaseSection() {
   return (
@@ -26,10 +15,10 @@ export default function ShowcaseSection() {
           <div className="order-1 md:order-2 flex items-center px-2 sm:px-4 py-3 border border-gray-200 rounded-2xl">
             <div className="flex flex-col md:flex-row gap-1 sm:gap-3 w-full justify-between items-center md:items-baseline">
               <h2 className="text-xl sm:text-[22px] font-semibold text-gray-900 tracking-tight text-center md:text-left">
-                Solutions We Offer
+                {content.showcase.title}
               </h2>
               <span className="text-sm font-medium text-gray-500/90 md:ml-auto text-center md:text-right">
-                Transforming categories at global scale
+                {content.showcase.subtitle}
               </span>
             </div>
           </div>

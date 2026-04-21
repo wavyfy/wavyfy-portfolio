@@ -1,5 +1,6 @@
 "use client";
 
+import { content } from "@/content/content";
 import { motion } from "framer-motion";
 import BookCallButton from "./BookCallButton";
 import StatusBadge from "./StatusBadge";
@@ -25,14 +26,13 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[3rem] font-semibold leading-[1.15] tracking-tight text-gray-900 mb-6">
-              Built for Scale.
+              {content.hero.title.line1}
               <br />
-              Designed for Impact.
+              {content.hero.title.line2}
             </h1>
 
             <p className="text-base md:text-lg text-gray-700 max-w-md mb-10 leading-relaxed">
-              We partner with visionary startups to engineer digital products
-              that dominate their category and convert at scale.
+              {content.hero.description}
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 mb-10">
@@ -56,50 +56,24 @@ export default function Hero() {
               className="hidden lg:block absolute left-0 top-5 w-70 space-y-5 pointer-events-auto"
               style={{ perspective: "1800px", transformStyle: "preserve-3d" }}
             >
-              <TestimonialCard
-                quote="...days, not weeks—highly recommend."
-                author="Marcus T"
-                className="translate-x-6 scale-90 opacity-30 shadow-sm"
-                style={{
-                  transform: "rotateY(5deg) rotateX(-2deg) translateZ(20px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="The updates and attention to detail are unmatched."
-                author="Nora S"
-                className="translate-x-20 scale-105 opacity-100 shadow-2xl"
-                style={{
-                  transform: "rotateY(3deg) rotateX(1.5deg) translateZ(60px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="Saved me weeks of work, and the result looks professional."
-                author=""
-                className="translate-x-10 scale-95 opacity-60 shadow-md"
-                style={{
-                  transform: "rotateY(4deg) rotateX(-2deg) translateZ(35px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="Completely changed how I approach launches."
-                author="Yara L"
-                className="translate-x-24 scale-100 opacity-85 shadow-xl"
-                style={{
-                  transform: "rotateY(3deg) rotateX(2deg) translateZ(50px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="...days, not weeks—highly recommend."
-                author="Marcus T"
-                className="translate-x-8 scale-90 opacity-25 shadow-sm"
-                style={{
-                  transform: "rotateY(6deg) rotateX(-1deg) translateZ(15px)",
-                }}
-              />
+              {content.hero.testimonials.left.map((testimonial, i) => {
+                const styles = [
+                  { className: "translate-x-6 scale-90 opacity-30 shadow-sm", transform: "rotateY(5deg) rotateX(-2deg) translateZ(20px)" },
+                  { className: "translate-x-20 scale-105 opacity-100 shadow-2xl", transform: "rotateY(3deg) rotateX(1.5deg) translateZ(60px)" },
+                  { className: "translate-x-10 scale-95 opacity-60 shadow-md", transform: "rotateY(4deg) rotateX(-2deg) translateZ(35px)" },
+                  { className: "translate-x-24 scale-100 opacity-85 shadow-xl", transform: "rotateY(3deg) rotateX(2deg) translateZ(50px)" },
+                  { className: "translate-x-8 scale-90 opacity-25 shadow-sm", transform: "rotateY(6deg) rotateX(-1deg) translateZ(15px)" },
+                ];
+                return (
+                  <TestimonialCard
+                    key={i}
+                    quote={testimonial.quote}
+                    author={testimonial.author}
+                    className={styles[i].className}
+                    style={{ transform: styles[i].transform }}
+                  />
+                );
+              })}
             </div>
 
             {/* Right (exact mirror of left) */}
@@ -107,50 +81,24 @@ export default function Hero() {
               className="hidden lg:block absolute right-0 top-5 w-70 space-y-5 pointer-events-auto"
               style={{ perspective: "1800px", transformStyle: "preserve-3d" }}
             >
-              <TestimonialCard
-                quote="...experience—launched my site in no time!"
-                author="Daniel K"
-                className="-translate-x-6 scale-90 opacity-30 shadow-sm"
-                style={{
-                  transform: "rotateY(-5deg) rotateX(-2deg) translateZ(20px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="Beautiful template, easy to customize, and worth every penny."
-                author="Amelia R"
-                className="-translate-x-20 scale-105 opacity-100 shadow-2xl"
-                style={{
-                  transform: "rotateY(-3deg) rotateX(1.5deg) translateZ(60px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="Exactly what I needed to kickstart my SaaS project fast."
-                author="Leo M"
-                className="-translate-x-10 scale-95 opacity-60 shadow-md"
-                style={{
-                  transform: "rotateY(-4deg) rotateX(-2deg) translateZ(35px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="Worth every penny, shipping faster than ever."
-                author="Sofia B"
-                className="-translate-x-24 scale-100 opacity-85 shadow-xl"
-                style={{
-                  transform: "rotateY(-3deg) rotateX(2deg) translateZ(50px)",
-                }}
-              />
-
-              <TestimonialCard
-                quote="...experience—launched my site in no time!"
-                author="Daniel K"
-                className="-translate-x-8 scale-90 opacity-25 shadow-sm"
-                style={{
-                  transform: "rotateY(-6deg) rotateX(-1deg) translateZ(15px)",
-                }}
-              />
+              {content.hero.testimonials.right.map((testimonial, i) => {
+                const styles = [
+                  { className: "-translate-x-6 scale-90 opacity-30 shadow-sm", transform: "rotateY(-5deg) rotateX(-2deg) translateZ(20px)" },
+                  { className: "-translate-x-20 scale-105 opacity-100 shadow-2xl", transform: "rotateY(-3deg) rotateX(1.5deg) translateZ(60px)" },
+                  { className: "-translate-x-10 scale-95 opacity-60 shadow-md", transform: "rotateY(-4deg) rotateX(-2deg) translateZ(35px)" },
+                  { className: "-translate-x-24 scale-100 opacity-85 shadow-xl", transform: "rotateY(-3deg) rotateX(2deg) translateZ(50px)" },
+                  { className: "-translate-x-8 scale-90 opacity-25 shadow-sm", transform: "rotateY(-6deg) rotateX(-1deg) translateZ(15px)" },
+                ];
+                return (
+                  <TestimonialCard
+                    key={i}
+                    quote={testimonial.quote}
+                    author={testimonial.author}
+                    className={styles[i].className}
+                    style={{ transform: styles[i].transform }}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         </Stagger>

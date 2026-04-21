@@ -7,32 +7,9 @@ import { Reveal } from "./Reveal";
 import { Stagger, staggerItem } from "./Stagger";
 import { motion } from "framer-motion";
 
-const projects = [
-  {
-    name: "Vanguard OS",
-    tags: ["UX Design", "Web Design"],
-    image:
-      "https://framerusercontent.com/images/xktGFEeTfvx5MDldvQxlaw79M.png?width=800&height=1200",
-  },
-  {
-    name: "Quantum Finance",
-    tags: ["UI Design", "Branding"],
-    image:
-      "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png?scale-down-to=2048&width=2400&height=1600",
-  },
-  {
-    name: "Nexus Core",
-    tags: ["Fintech", "UX Design"],
-    image:
-      "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png?scale-down-to=2048&width=2400&height=1600",
-  },
-  {
-    name: "Pulse Data Network",
-    tags: ["UI Design", "Motion Design"],
-    image:
-      "https://framerusercontent.com/images/TwCiV5MUt16Q38ftZYKlEhNhbJI.png?scale-down-to=2048&width=1984&height=2400",
-  },
-];
+import { content } from "@/content/content";
+
+const projects = content.projects.list;
 
 export default function Projects() {
   return (
@@ -45,9 +22,9 @@ export default function Projects() {
               <StatusBadge dotColor="bg-red-500" title="Infrastructure" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-[2.6rem] font-semibold leading-[1.2] tracking-tight">
-              <span className="text-gray-900">Work we&apos;ve</span>
+              <span className="text-gray-900">{content.projects.title}</span>
               <br />
-              <span className="text-gray-500">successfully deployed.</span>
+              <span className="text-gray-500">{content.projects.subtitle}</span>
             </h2>
           </div>
 

@@ -6,65 +6,9 @@ import { Reveal } from "./Reveal";
 import { staggerItemDelayed } from "./Stagger";
 import { motion } from "framer-motion";
 
-const services = [
-  {
-    theme: "dark",
-    title1: "Shopify",
-    title2: "Development",
-    description:
-      "Custom Shopify stores built to convert — from theme development to full e-commerce solutions that drive sales.",
-    price: "$ 2,500",
-    cycle: "One time",
-    pricePrefix: "",
-    badge: null,
-    features: [
-      { text: "Custom Shopify theme development" },
-      { text: "Product & collection setup", info: true },
-      { text: "10-14 Days delivery-time" },
-      { text: "SEO & performance optimized" },
-      { text: "1-1 Private Slack channel" },
-      { text: "50% secured upfront payment" },
-    ],
-  },
-  {
-    theme: "dark",
-    title1: "SaaS",
-    title2: "Development",
-    description:
-      "End-to-end SaaS product development — from MVP to a fully scalable platform built for growth and retention.",
-    price: "$ 9,000+",
-    cycle: "",
-    pricePrefix: "Starts at",
-    badge: "Limited spots",
-    features: [
-      { text: "Dedicated full-stack team" },
-      { text: "Auth, billing & dashboard included", info: true },
-      { text: "Agile delivery, monthly commitment" },
-      { text: "Scalable cloud architecture" },
-      { text: "1-1 Private Slack channel" },
-      { text: "50% secured upfront payment" },
-    ],
-  },
-  {
-    theme: "dark",
-    title1: "Web & App",
-    title2: "Development",
-    description:
-      "High-performance websites and mobile applications crafted to deliver seamless user experiences across all devices.",
-    price: "$ 4,500",
-    cycle: "One time",
-    pricePrefix: "",
-    badge: null,
-    features: [
-      { text: "Custom web or mobile app" },
-      { text: "Responsive & cross-platform", info: true },
-      { text: "14-21 Days delivery-time" },
-      { text: "SEO & Core Web Vitals optimized" },
-      { text: "1-1 Private Slack channel" },
-      { text: "50% secured upfront payment" },
-    ],
-  },
-];
+import { content } from "@/content/content";
+
+const services = content.services.list;
 
 // middle=0 (first), left=1 (second), right=2 (third)
 const staggerOrder = [1, 0, 2];
@@ -124,13 +68,12 @@ export default function Services() {
               <StatusBadge dotColor="bg-red-500" title="Services" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-4">
-              <span className="text-gray-900">Pick a service.</span>
+              <span className="text-gray-900">{content.services.title}</span>
               <br />
-              <span className="text-gray-500">Built around your goals.</span>
+              <span className="text-gray-500">{content.services.subtitle}</span>
             </h2>
             <p className="text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto leading-relaxed">
-              From Shopify stores to full SaaS platforms — we build digital
-              products that perform, scale, and convert.
+              {content.services.description}
             </p>
           </div>
         </Reveal>

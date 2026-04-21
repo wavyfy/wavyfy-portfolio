@@ -6,48 +6,9 @@ import DarkCTACard from "./DarkCTACard";
 import StatusBadge from "./StatusBadge";
 import { Reveal } from "./Reveal";
 
-const faqs = [
-  {
-    question: "What does your architecture stack look like?",
-    answer:
-      "We build heavily on robust modern primitives: React/Next.js for the frontend, Node/Go for microservices, and specialized edge infrastructure for global delivery.",
-  },
-  {
-    question: "Can your systems handle burst scaling?",
-    answer:
-      "Absolutely. We architect for high concurrency from day one, utilizing edge caching, horizontal scaling policies, and automated failovers to handle extreme traffic spikes.",
-  },
-  {
-    question: "Do you integrate with legacy enterprise platforms?",
-    answer:
-      "Yes. We frequently build scalable integration layers and proxy services that allow modern frontends to securely communicate with legacy backend systems.",
-  },
-  {
-    question: "How do you handle security and compliance?",
-    answer:
-      "Security is fully integrated into our pipelines, including automated vulnerability scanning, strict IAM configurations, and core compliance readiness for data handling.",
-  },
-  {
-    question: "Do you provide post-deployment SLA?",
-    answer:
-      "We offer extended SLA agreements covering uptime guarantees, continuous performance monitoring, and critical bug resolutions post-launch.",
-  },
-  {
-    question: "What is your typical development cycle?",
-    answer:
-      "We run lean, iterative sprints with high-frequency deployments. Our CI/CD pipelines ensure we ship improvements daily without disrupting live user traffic.",
-  },
-  {
-    question: "Are your platforms SEO optimized out of the box?",
-    answer:
-      "Yes. Utilizing server-side rendering and dynamic metadata injection, our platforms achieve near-perfect lighthouse scores to dominate Core Web Vitals.",
-  },
-  {
-    question: "Can we migrate from our existing monolithic stack?",
-    answer:
-      "Our team excels at strangler fig migrations, allowing you to steadily migrate from legacy monoliths to decoupled microservices with zero operational downtime.",
-  },
-];
+import { content } from "@/content/content";
+
+const faqs = content.faq.list;
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -69,9 +30,9 @@ export default function FAQ() {
                     <StatusBadge dotColor="bg-red-500" title="FAQ" />
                   </div>
                   <h2 className="text-4xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight mb-0">
-                    <span className="text-gray-900">Technical</span>
+                    <span className="text-gray-900">{content.faq.title}</span>
                     <br />
-                    <span className="text-gray-500">Clarifications.</span>
+                    <span className="text-gray-500">{content.faq.subtitle}</span>
                   </h2>
                 </div>
               </div>
@@ -80,7 +41,7 @@ export default function FAQ() {
               <div className="hidden lg:block">
                 <DarkCTACard className="max-w-md">
                   <p className="text-white text-3xl font-semibold">
-                    Still analyzing?
+                    {content.cta.stillAnalyzing}
                   </p>
                 </DarkCTACard>
               </div>
@@ -147,7 +108,7 @@ export default function FAQ() {
             <div className="block lg:hidden w-full mt-4">
               <DarkCTACard className="w-full">
                 <p className="text-white text-3xl font-semibold">
-                  Still analyzing?
+                  {content.cta.stillAnalyzing}
                 </p>
               </DarkCTACard>
             </div>

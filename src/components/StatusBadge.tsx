@@ -1,3 +1,5 @@
+import { content } from "@/content/content";
+
 interface StatusBadgeProps {
   className?: string;
   title?: string;
@@ -6,7 +8,7 @@ interface StatusBadgeProps {
 
 export default function StatusBadge({
   className = "",
-  title = "Open to Work",
+  title = content.common.status,
   dotColor = "bg-green-500",
 }: StatusBadgeProps) {
   return (
