@@ -2,11 +2,14 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { content } from "@/content/content";
 
-interface BookCallButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BookCallButtonProps {
   text?: string;
   className?: string;
   iconContainerClassName?: string;
   iconClassName?: string;
+  href?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function BookCallButton({
@@ -14,10 +17,16 @@ export default function BookCallButton({
   className = "",
   iconContainerClassName = "",
   iconClassName = "w-4 h-4",
-  ...props
+  href = "#contact",
+  onClick,
+  type = "button",
 }: BookCallButtonProps) {
+  const isLink = href && type !== "submit";
+  const Tag = isLink ? "a" : "button";
+  const props = isLink ? { href } : { onClick, type };
+
   return (
-    <button
+    <Tag
       className={`group transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${className}`}
       {...props}
     >
@@ -29,6 +38,6 @@ export default function BookCallButton({
           className={`transition-transform duration-300 ease-out group-hover:translate-x-2 ${iconClassName}`}
         />
       </span>
-    </button>
+    </Tag>
   );
 }

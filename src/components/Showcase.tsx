@@ -52,16 +52,17 @@ export default function ShowcaseSection() {
               slides={slides.map(({ src, alt }, i) => (
                 <div
                   key={i}
-                  className="rounded-[20px] p-2 bg-white/80 border border-gray-200 shadow-lg flex-1 flex flex-col w-full h-[300px] sm:h-[300px] sm:w-[400px]"
+                  className="rounded-[20px] p-2 bg-white/80 border border-gray-200 shadow-lg flex-1 flex flex-col w-full h-[230px] sm:h-[230px] sm:w-[400px]"
                 >
-                  <div className="rounded-[16px] overflow-hidden bg-black flex-1 relative group cursor-pointer">
+                  <div className="rounded-[16px] overflow-hidden bg-white flex-1 relative group cursor-pointer">
                     <Image
                       src={src}
                       alt={alt}
                       fill
-                      sizes="300px"
+                      sizes="700px"
+                      quality={100}
                       priority={i === 0}
-                      className="object-cover opacity-100 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
+                      className="object-contain rounded-xl opacity-100 transition-transform duration-700 group-hover:opacity-100 [image-rendering:-webkit-optimize-contrast]"
                     />
                   </div>
                 </div>

@@ -37,22 +37,6 @@ const FeatureIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Inline replacement for lucide-react Info icon
-const InfoIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="12" y1="16" x2="12" y2="12" />
-    <line x1="12" y1="8" x2="12.01" y2="8" />
-  </svg>
-);
 
 export default function Services() {
   return (
@@ -114,7 +98,7 @@ export default function Services() {
                   <hr className="w-full border-gray-100/20" />
                 </div>
                 <p
-                  className={`text-md mr-20 font-medium ${service.theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
+                  className={`text-md text-center font-medium ${service.theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
                 >
                   {service.description}
                 </p>
@@ -149,11 +133,6 @@ export default function Services() {
                       >
                         {feature.text}
                       </span>
-                      {feature.info && (
-                        <InfoIcon
-                          className={`w-3.5 h-3.5 ${service.theme === "dark" ? "text-gray-600" : "text-gray-400"}`}
-                        />
-                      )}
                     </li>
                   ))}
                 </ul>

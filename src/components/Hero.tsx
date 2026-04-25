@@ -13,7 +13,7 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden pb-0 md:pb-28 max-w-360 mx-auto"
     >
-      <div className= "max-w-8xl mx-auto px-2 sm:px-4 pt-5 pb-0 ">
+      <div className="max-w-8xl mx-auto px-2 sm:px-4 pt-5 pb-0">
         <Stagger delay={0.5} stagger={0.8} duration={1}>
           {/* Center Content */}
           <motion.div
@@ -69,8 +69,8 @@ export default function Hero() {
                     key={i}
                     quote={testimonial.quote}
                     author={testimonial.author}
-                    className={styles[i].className}
-                    style={{ transform: styles[i].transform }}
+                    className={styles[i % styles.length].className}
+                    style={{ transform: styles[i % styles.length].transform }}
                   />
                 );
               })}
@@ -94,8 +94,8 @@ export default function Hero() {
                     key={i}
                     quote={testimonial.quote}
                     author={testimonial.author}
-                    className={styles[i].className}
-                    style={{ transform: styles[i].transform }}
+                    className={styles[i % styles.length].className}
+                    style={{ transform: styles[i % styles.length].transform }}
                   />
                 );
               })}

@@ -5,6 +5,7 @@ import { content } from "@/content/content";
 interface DarkCTACardProps {
   className?: string;
   children?: ReactNode;
+  showButton?: boolean;
   text?: {
     line1?: string;
     line2?: string;
@@ -16,6 +17,7 @@ interface DarkCTACardProps {
 export default function DarkCTACard({
   className,
   children,
+  showButton = true,
   text,
 }: DarkCTACardProps) {
   return (
@@ -54,13 +56,15 @@ export default function DarkCTACard({
           </p>
         )}
       </div>
-      <div className="relative z-10 flex justify-end mt-8">
-        <BookCallButton
-          className="flex items-center gap-3 bg-white text-gray-900 text-lg font-medium pl-6 pr-3 py-3 rounded-xl transition-all hover:bg-gray-100"
-          iconContainerClassName="w-12 h-8 rounded-lg bg-gray-200"
-          iconClassName="w-4 h-4 text-gray-900"
-        />
-      </div>
+      {showButton && (
+        <div className="relative z-10 flex justify-end mt-8">
+          <BookCallButton
+            className="flex items-center gap-3 bg-white text-gray-900 text-lg font-medium pl-6 pr-3 py-3 rounded-xl transition-all hover:bg-gray-100"
+            iconContainerClassName="w-12 h-8 rounded-lg bg-gray-200"
+            iconClassName="w-4 h-4 text-gray-900"
+          />
+        </div>
+      )}
     </div>
   );
 }

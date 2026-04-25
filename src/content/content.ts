@@ -1,75 +1,16 @@
-export interface NavLink {
-  label: string;
-  id: string;
-}
-
-export interface HeroTestimonial {
-  quote: string;
-  author: string;
-}
-
-export interface ShowcaseSlide {
-  src: string;
-  alt: string;
-}
-
-export interface Project {
-  name: string;
-  tags: string[];
-  image: string;
-}
-
-export interface ProcessStep {
-  number: string;
-  title: string;
-  description: string;
-}
-
-export interface Testimonial {
-  id: number;
-  metric: string;
-  title: string;
-  quote: string;
-  author: string;
-  role: string;
-  avatar: string;
-  spanClass: string;
-}
-
-export interface ServiceFeature {
-  text: string;
-  info?: boolean;
-}
-
-export interface Service {
-  theme: string;
-  title1: string;
-  title2: string;
-  description: string;
-  price: string;
-  cycle: string;
-  pricePrefix: string;
-  badge: string | null;
-  features: ServiceFeature[];
-}
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export interface FooterLink {
-  label: string;
-  href: string;
-}
-
-export interface FooterContact extends FooterLink {
-  iconName: string;
-}
-
-export interface FooterSocial extends FooterLink {
-  iconName: string;
-}
+import {
+  NavLink,
+  HeroTestimonial,
+  ShowcaseSlide,
+  Project,
+  ProcessStep,
+  Testimonial,
+  Service,
+  FAQItem,
+  FooterLink,
+  FooterContact,
+  FooterSocial,
+} from "./types";
 
 export const content = {
   navbar: {
@@ -82,61 +23,92 @@ export const content = {
     ] as NavLink[],
     cta: "Book A Call",
   },
-  common: {
-    status: "Open to Work",
-  },
-  cta: {
-    bookCall: "Book A Call",
-    stillAnalyzing: "Still analyzing?",
-    defaultCard: {
-      line1: "You command ",
-      line2: "the market.",
-      line3: "We engineer the systems ",
-      highlight: "that make it possible.",
-    },
-  },
+
   hero: {
     title: {
-      line1: "Built for Scale.",
-      line2: "Designed for Impact.",
+      line1: "Got an idea?",
+      line2: "Let's build it right.",
     },
     description:
-      "We partner with visionary startups to engineer digital products that dominate their category and convert at scale.",
+      "We build Websites, Shopify Stores, SaaS Platforms and Apps that fits your budget and goals",
     testimonials: {
       left: [
-        { quote: "...days, not weeks—highly recommend.", author: "Marcus T" },
-        { quote: "The updates and attention to detail are unmatched.", author: "Nora S" },
-        { quote: "Saved me weeks of work, and the result looks professional.", author: "" },
-        { quote: "Completely changed how I approach launches.", author: "Yara L" },
-        { quote: "...days, not weeks—highly recommend.", author: "Marcus T" },
+        {
+          quote:
+            "Smooth experience. The admin panel was useful and everything worked well.",
+          author: "Saurav Sharma",
+        },
+        {
+          quote: "Simple process with minimal follow up needed.",
+          author: "Saumya Mehta",
+        },
+        {
+          quote: "Clean, professional design and helpful team.",
+          author: "Kunal Verma",
+        },
+        {
+          quote: "Clear communication and well managed work.",
+          author: "Rahul Aggrawal",
+        },
+        {
+          quote:
+            "Smooth experience. The admin panel was useful and everything worked well.",
+          author: "Saurav Sharma",
+        },
+        {
+          quote: "Simple process with minimal follow up needed.",
+          author: "Saumya Mehta",
+        },
       ] as HeroTestimonial[],
       right: [
-        { quote: "...experience—launched my site in no time!", author: "Daniel K" },
-        { quote: "Beautiful template, easy to customize, and worth every penny.", author: "Amelia R" },
-        { quote: "Exactly what I needed to kickstart my SaaS project fast.", author: "Leo M" },
-        { quote: "Worth every penny, shipping faster than ever.", author: "Sofia B" },
-        { quote: "...experience—launched my site in no time!", author: "Daniel K" },
+        {
+          quote: "Clean, professional design and helpful team.",
+          author: "Kunal Verma",
+        },
+        {
+          quote: "Clear communication and well managed work.",
+          author: "Rahul Aggrawal",
+        },
+        {
+          quote:
+            "Smooth experience. The admin panel was useful and everything worked well.",
+          author: "Saurav Sharma",
+        },
+        {
+          quote: "Simple process with minimal follow up needed.",
+          author: "Saumya Mehta",
+        },
+        {
+          quote: "Clean, professional design and helpful team.",
+          author: "Kunal Verma",
+        },
+        {
+          quote: "Clear communication and well managed work.",
+          author: "Rahul Aggrawal",
+        },
       ] as HeroTestimonial[],
     },
   },
+
   showcase: {
-    title: "Solutions We Offer",
-    subtitle: "Transforming categories at global scale",
+    title: "Solutions",
+    subtitle: "We can build for you",
     slides: [
       {
-        src: "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png",
-        alt: "Quantum Finance – UI design and brand identity dashboard",
+        src: "/Screenshot 2026-04-26 011032.png",
+        alt: "Bella Exotica e-commerce landing page design for premium organic cereals and nuts",
       },
       {
-        src: "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png",
-        alt: "Nexus Core – fintech UX design platform interface",
+        src: "/Screenshot 2026-04-26 011302.png",
+        alt: "BIBA fashion e-commerce website design showcasing new arrivals and collections",
       },
       {
-        src: "https://framerusercontent.com/images/MAVstedJYqQvsrJ7l1kxjR498.jpg",
-        alt: "Wavyfy client project – web design and SaaS development showcase",
+        src: "/Screenshot 2026-04-26 011510.png",
+        alt: "Samsung Galaxy Ring product launch page design with 3D product rendering",
       },
     ] as ShowcaseSlide[],
   },
+
   projects: {
     title: "Work we've",
     subtitle: "successfully deployed.",
@@ -144,202 +116,242 @@ export const content = {
       {
         name: "Vanguard OS",
         tags: ["UX Design", "Web Design"],
-        image: "https://framerusercontent.com/images/xktGFEeTfvx5MDldvQxlaw79M.png?width=800&height=1200",
+        image:
+          "https://framerusercontent.com/images/xktGFEeTfvx5MDldvQxlaw79M.png?width=800&height=1200",
       },
       {
         name: "Quantum Finance",
         tags: ["UI Design", "Branding"],
-        image: "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png?scale-down-to=2048&width=2400&height=1600",
+        image:
+          "https://framerusercontent.com/images/1KCYDj61X5Ycm5Vp5kluuhMho.png?scale-down-to=2048&width=2400&height=1600",
       },
       {
         name: "Nexus Core",
         tags: ["Fintech", "UX Design"],
-        image: "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png?scale-down-to=2048&width=2400&height=1600",
+        image:
+          "https://framerusercontent.com/images/uqJwE4mTSKeNtBAX8YU8vy1hkVs.png?scale-down-to=2048&width=2400&height=1600",
       },
       {
         name: "Pulse Data Network",
         tags: ["UI Design", "Motion Design"],
-        image: "https://framerusercontent.com/images/TwCiV5MUt16Q38ftZYKlEhNhbJI.png?scale-down-to=2048&width=1984&height=2400",
+        image:
+          "https://framerusercontent.com/images/TwCiV5MUt16Q38ftZYKlEhNhbJI.png?scale-down-to=2048&width=1984&height=2400",
       },
     ] as Project[],
   },
+
   process: {
-    title: "Strategic Execution.",
-    subtitle: "Zero compromises.",
-    description: "We systematically architect, build, and deploy high-conversion systems tailored to your technical requirements.",
+    title: "How We Work",
+    subtitle: "Clear and Simple.",
+    description:
+      "We follow a clear, structured approach to turn your idea into a reliable, high-performing product without confusion or delays.",
     steps: [
       {
         number: "01",
-        title: "Audit & Analysis",
-        description: "Deep-dive diagnostics into your current architecture and market positioning.",
+        title: "Understanding Your Needs",
+        description:
+          "We discuss your idea, goals, and challenges to get a clear direction before starting.",
       },
       {
         number: "02",
-        title: "Architectural Design",
-        description: "Crafting the blueprint for a scalable, high-performance user experience.",
+        title: "Planning & Design",
+        description:
+          "We map out how everything will work including structure, features, and user experience.",
       },
       {
         number: "03",
-        title: "Precision Development",
-        description: "Deploying robust, battle-tested code built with modern stacks.",
+        title: "Building Your Product",
+        description:
+          "We develop your product step by step with clean, reliable, and scalable code.",
       },
       {
         number: "04",
-        title: "Performance Scaling",
-        description: "Continuous optimization to ensure your product leads, never follows.",
+        title: "Testing & Launch",
+        description:
+          "We test everything thoroughly and launch your product smoothly for real users.",
       },
     ] as ProcessStep[],
   },
+
   testimonials: {
-    title: "Impact Reports.",
-    subtitle: "Measurable technical output.",
+    title: "Client Reviews",
+    subtitle: "That reflects our work",
     list: [
       {
         id: 1,
-        metric: "3.5x",
-        title: "increase in platform throughput",
-        quote: "Their architectural choices drastically improved our data layer capacity. The system now handles 3.5x the volume without any latency spikes. Exceptional engineering.",
-        author: "Sarah Coleman",
-        role: "CTO",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+        metric: "9/10",
+        title: "client satisfaction rating",
+        quote:
+          "Overall it was a good experience. The admin panel was actually very useful and everything worked smoothly from start to finish.",
+        author: "Saurav Sharma",
+        role: "Client",
+        avatar:
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
         spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
       },
       {
         id: 2,
-        metric: "100ms",
-        title: "latency reduction across core APIs",
-        quote: "The precision with which they execute is rare. We cut 100ms off our core API responses, leading to an immediate boost in user retention and server efficiency.",
-        author: "Amina Khatri",
-        role: "VP of Engineering",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        metric: "Smooth",
+        title: "hassle free process",
+        quote:
+          "Nice working with the team. The whole process felt simple and things were handled without me having to follow up much. Moving online really helped.",
+        author: "Saumya Mehta",
+        role: "Client",
+        avatar:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
         spanClass: "md:col-span-2 lg:col-span-2 lg:row-span-2",
       },
       {
         id: 3,
-        metric: "Zero",
-        title: "downtime during major migration",
-        quote: "They architected and executed our v3 migration flawlessly. Moving a massive active user base with zero downtime requires a team that truly understands infrastructure routing and redundancy.",
-        author: "Marcus Levine",
-        role: "Co-founder & Architect",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        metric: "Clean",
+        title: "design quality",
+        quote:
+          "Honestly it was good. The design looks clean and professional and the team was very helpful throughout the whole process.",
+        author: "Kunal Verma",
+        role: "Client",
+        avatar:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
         spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
       },
       {
         id: 4,
-        metric: "4x",
-        title: "faster build pipelines",
-        quote: "By optimizing our container configurations and caching strategies, they slashed our CI/CD pipeline times entirely. Our developers are now shipping code 4x faster.",
-        author: "Julian Ortega",
-        role: "Head of Infrastructure",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        metric: "Reliable",
+        title: "communication and delivery",
+        quote:
+          "The work was handled properly and I always knew what was going on. Communication was clear and the overall experience felt very sorted.",
+        author: "Rahul Aggrawal",
+        role: "Client",
+        avatar:
+          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
         spanClass: "md:col-span-1 lg:col-span-2 lg:row-span-1",
       },
     ] as Testimonial[],
   },
+
   services: {
-    title: "Pick a service.",
-    subtitle: "Built around your goals.",
-    description: "From Shopify stores to full SaaS platforms — we build digital products that perform, scale, and convert.",
+    title: "Choose a service",
+    subtitle: "Aligned with your goals.",
+    description:
+      "We build Shopify stores, SaaS platforms, and apps that perform, scale, and convert.",
     list: [
+      {
+        theme: "dark",
+        title1: "Web & App",
+        title2: "Development",
+        description:
+          "High performance websites and mobile apps built for seamless user experience. Pricing is based on your requirements.",
+        price: "Custom",
+        cycle: "Scope-based pricing",
+        pricePrefix: "",
+        badge: null,
+        features: [
+          { text: "Custom web or React Native mobile app" },
+          { text: "UI/UX design included" },
+          { text: "Responsive & cross-platform (iOS + Android)" },
+          { text: "SEO basics & page speed optimization" },
+          { text: "API integrations & third-party services" },
+          { text: "Delivery & timeline varies for apps & websites" },
+        ],
+      },
       {
         theme: "dark",
         title1: "Shopify",
         title2: "Development",
-        description: "Custom Shopify stores built to convert — from theme development to full e-commerce solutions that drive sales.",
-        price: "$ 2,500",
-        cycle: "One time",
-        pricePrefix: "",
+        description:
+          "A Shopify store built to convert with custom design and complete setup. Ideal for clothing, jewellery, beauty, and home brands",
+        price: "₹ 20,000",
+        cycle: "",
+        pricePrefix: "Starting from",
         badge: null,
         features: [
-          { text: "Custom Shopify theme development" },
-          { text: "Product & collection setup", info: true },
-          { text: "10-14 Days delivery-time" },
-          { text: "SEO & performance optimized" },
-          { text: "1-1 Private Slack channel" },
-          { text: "50% secured upfront payment" },
+          { text: "Custom Shopify theme design & development" },
+          { text: "Product catalogue & collection setup" },
+          { text: "Payment gateway & checkout configuration" },
+          { text: "SEO basics & page speed optimization" },
+          { text: "Mobile-first, conversion-focused design" },
+          { text: "7–14 day delivery timeline" },
         ],
       },
       {
         theme: "dark",
         title1: "SaaS",
         title2: "Development",
-        description: "End-to-end SaaS product development — from MVP to a fully scalable platform built for growth and retention.",
-        price: "$ 9,000+",
-        cycle: "",
-        pricePrefix: "Starts at",
+        description:
+          "End to end SaaS development from idea to scalable product. Built, designed, and deployed based on your scope.",
+        price: "Custom",
+        cycle: "Scope-based pricing",
+        pricePrefix: "",
         badge: "Limited spots",
         features: [
-          { text: "Dedicated full-stack team" },
-          { text: "Auth, billing & dashboard included", info: true },
-          { text: "Agile delivery, monthly commitment" },
+          { text: "MVP scoping & product roadmap" },
+          { text: "Auth, billing & user dashboard included" },
           { text: "Scalable cloud architecture" },
-          { text: "1-1 Private Slack channel" },
-          { text: "50% secured upfront payment" },
-        ],
-      },
-      {
-        theme: "dark",
-        title1: "Web & App",
-        title2: "Development",
-        description: "High-performance websites and mobile applications crafted to deliver seamless user experiences across all devices.",
-        price: "$ 4,500",
-        cycle: "One time",
-        pricePrefix: "",
-        badge: null,
-        features: [
-          { text: "Custom web or mobile app" },
-          { text: "Responsive & cross-platform", info: true },
-          { text: "14-21 Days delivery-time" },
-          { text: "SEO & Core Web Vitals optimized" },
-          { text: "1-1 Private Slack channel" },
-          { text: "50% secured upfront payment" },
+          { text: "Admin panel & analytics" },
+          { text: "Dedicated full-stack team" },
+          { text: "Flexible payment structuret" },
         ],
       },
     ] as Service[],
   },
+
   faq: {
     title: "Technical",
     subtitle: "Clarifications.",
     list: [
       {
-        question: "What does your architecture stack look like?",
-        answer: "We build heavily on robust modern primitives: React/Next.js for the frontend, Node/Go for microservices, and specialized edge infrastructure for global delivery.",
+        question: "How long does a project usually take?",
+        answer:
+          "Most projects take 2 to 6 weeks depending on scope, complexity, and feedback speed.",
       },
       {
-        question: "Can your systems handle burst scaling?",
-        answer: "Absolutely. We architect for high concurrency from day one, utilizing edge caching, horizontal scaling policies, and automated failovers to handle extreme traffic spikes.",
+        question: "Do I fully own the final product?",
+        answer:
+          "Yes. Once completed and paid for, you get full ownership of the code, design, and assets.",
       },
       {
-        question: "Do you integrate with legacy enterprise platforms?",
-        answer: "Yes. We frequently build scalable integration layers and proxy services that allow modern frontends to securely communicate with legacy backend systems.",
+        question: "What technologies do you use?",
+        answer:
+          "We choose based on the project, but typically use modern stacks like React, Next.js, Node.js, and scalable infrastructure.",
       },
       {
-        question: "How do you handle security and compliance?",
-        answer: "Security is fully integrated into our pipelines, including automated vulnerability scanning, strict IAM configurations, and core compliance readiness for data handling.",
+        question: "Do you provide support after launch?",
+        answer:
+          "Yes. We offer optional maintenance and support plans for updates, fixes, and scaling.",
       },
       {
-        question: "Do you provide post-deployment SLA?",
-        answer: "We offer extended SLA agreements covering uptime guarantees, continuous performance monitoring, and critical bug resolutions post-launch.",
+        question: "How much does a project cost?",
+        answer:
+          "Pricing depends on scope, features, and complexity. After understanding your requirements, we provide a clear quote.",
       },
       {
-        question: "What is your typical development cycle?",
-        answer: "We run lean, iterative sprints with high-frequency deployments. Our CI/CD pipelines ensure we ship improvements daily without disrupting live user traffic.",
+        question: "Do I need technical knowledge to work with you?",
+        answer:
+          "No. We handle everything and keep communication simple so you always understand what’s happening.",
       },
       {
-        question: "Are your platforms SEO optimized out of the box?",
-        answer: "Yes. Utilizing server-side rendering and dynamic metadata injection, our platforms achieve near-perfect lighthouse scores to dominate Core Web Vitals.",
+        question: "How do you ensure deadlines are met?",
+        answer:
+          "We follow structured workflows with clear milestones and regular updates to keep the project on track.",
       },
       {
-        question: "Can we migrate from our existing monolithic stack?",
-        answer: "Our team excels at strangler fig migrations, allowing you to steadily migrate from legacy monoliths to decoupled microservices with zero operational downtime.",
+        question: "Do you help with deployment and hosting?",
+        answer:
+          "Yes. We handle deployment and can guide or manage hosting based on your needs.",
+      },
+      {
+        question: "How do we communicate during the project?",
+        answer:
+          "We communicate via WhatsApp, Slack, or email with regular updates and checkpoints.",
       },
     ] as FAQItem[],
   },
+
   footer: {
     cta: {
-      line1: "Ready to ship?",
-      line2: "Initialize your next project.",
-      description: "Secure an architectural review to benchmark your current infrastructure and map out an execution plan.",
+      line1: "Ready to build?",
+      line2: "We handle the rest.",
+      description:
+        "Let’s discuss how we can build something reliable and scalable together.",
       button: "View Services",
     },
     headings: {
@@ -355,22 +367,311 @@ export const content = {
       { label: "Contact us", href: "#contact" },
     ] as FooterLink[],
     contacts: [
-      { label: "hello@wavyfy.com", href: "mailto:hello@wavyfy.com", iconName: "Gmail" },
-      { label: "(+91) 9288 670 204", href: "tel:+919288670204", iconName: "WhatsApp" },
-      { label: "Bhopal, MP, India", href: "https://maps.google.com/?q=Bhopal,MP,India", iconName: "Google Maps" },
+      {
+        label: "hello@wavyfy.com",
+        href: "mailto:hello@wavyfy.com",
+        iconName: "Gmail",
+      },
+      {
+        label: "(+91) 9288 670 204",
+        href: "https://wa.me/919288670204",
+        iconName: "WhatsApp",
+      },
+      {
+        label: "Bhopal, MP, India",
+        href: "https://maps.google.com/?q=Bhopal,MP,India",
+        iconName: "Google Maps",
+      },
     ] as FooterContact[],
     socials: [
-      { label: "Instagram", href: "#", iconName: "Instagram" },
-      { label: "LinkedIn", href: "#", iconName: "LinkedIn" },
-      { label: "Twitter", href: "#", iconName: "Twitter" },
-      { label: "YouTube", href: "#", iconName: "YouTube" },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/wavyfy.talks?igsh=aGxnZ2o5Mmpibms5",
+        iconName: "Instagram",
+      },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/wavyfy-agency/",
+        iconName: "LinkedIn",
+      },
+      {
+        label: "Twitter",
+        href: "https://x.com/wavyfyofficial",
+        iconName: "Twitter",
+      },
+      {
+        label: "YouTube",
+        href: "https://youtube.com/@wavyfy_talks",
+        iconName: "YouTube",
+      },
     ] as FooterSocial[],
     legal: [
       { label: "Privacy policy", href: "#" },
-      { label: "Terms of services", href: "#" },
+      { label: "Terms of Service", href: "#" },
       { label: "Refund Policy", href: "#" },
     ] as FooterLink[],
+    legalDetails: {
+      "Privacy policy": {
+        effectiveDate: "April 26, 2026",
+        lastUpdated: "April 26, 2026",
+        sections: [
+          {
+            title: "1. Who We Are",
+            content:
+              "Wavyfy\nBhopal, Madhya Pradesh, India\nEmail: hello@wavyfy.com",
+          },
+          {
+            title: "2. Information We Collect",
+            subtitle1: "a. Information You Provide",
+            content1:
+              "Name, Email address, Phone number, Project or business details",
+            subtitle2: "b. Automatically Collected Data",
+            content2:
+              "Basic technical data such as IP address and browser type (for security and server logs only)",
+          },
+          {
+            title: "3. How We Use Your Information",
+            content:
+              "We use your data to:\n• Respond to your inquiries\n• Understand your requirements\n• Communicate regarding your project\n• Maintain basic website security\n\nWe do not use your data for marketing or tracking.",
+          },
+          {
+            title: "4. Payments",
+            content:
+              "Payments, if applicable, are handled via secure third-party providers (e.g., Stripe, Razorpay). We do not store payment details.",
+          },
+          {
+            title: "5. Data Sharing",
+            content:
+              "We do not sell your data. We may share it only with:\n• Hosting or infrastructure providers (for website operation)\n• Payment providers (if you proceed with services)\n• Legal authorities if required",
+          },
+          {
+            title: "6. Cookies",
+            content:
+              "We do not use cookies or tracking technologies on this website.",
+          },
+          {
+            title: "7. Data Storage & Security",
+            content:
+              "Data may be stored securely on cloud infrastructure (e.g., hosting providers). We take reasonable measures to protect it.",
+          },
+          {
+            title: "8. Data Retention",
+            content:
+              "We keep your data only as long as needed to respond to your inquiry or provide services.",
+          },
+          {
+            title: "9. Your Rights",
+            content:
+              "You can request:\n• Access to your data\n• Correction or deletion\n\nContact: hello@wavyfy.com",
+          },
+          {
+            title: "10. Children’s Privacy",
+            content:
+              "This website is not intended for individuals under 18. We do not knowingly collect data from minors.",
+          },
+          {
+            title: "11. Third-Party Links",
+            content:
+              "We are not responsible for privacy practices of external websites linked from our site.",
+          },
+          {
+            title: "12. Updates",
+            content:
+              "We may update this policy. Changes will be reflected with a new date.",
+          },
+          {
+            title: "13. Contact",
+            content: "hello@wavyfy.com",
+          },
+        ],
+      },
+      "Terms of Service": {
+        effectiveDate: "April 26, 2026",
+        lastUpdated: "April 26, 2026",
+        sections: [
+          {
+            title: "1. Overview",
+            content:
+              "These Terms and Conditions govern your use of services provided by Wavyfy, based in Bhopal, Madhya Pradesh, India. By engaging with us, you agree to these terms.",
+          },
+          {
+            title: "2. Services",
+            content:
+              "We provide digital services including:\n• Website and web application development\n• Mobile app development\n• Shopify development\n• SaaS product development\n\nAll services are delivered based on agreed project scope.",
+          },
+          {
+            title: "3. Project Scope & Changes",
+            content:
+              "• Work is executed strictly based on the agreed scope\n• Any additional features or changes may require extra cost and timeline adjustments\n• Clear communication and approvals are required before implementation",
+          },
+          {
+            title: "4. Payments",
+            content:
+              "• Projects require an advance payment to begin work\n• Remaining payment is due as per agreed milestones or before final delivery\n• Payments are processed via secure third-party providers\n\nFailure to complete payment may result in work pause or withholding delivery",
+          },
+          {
+            title: "5. Refunds",
+            content:
+              "Refunds are governed by our Refund Policy. In general:\n• Advance payments are non-refundable\n• No full refunds after work has started",
+          },
+          {
+            title: "6. Timelines",
+            content:
+              "• Estimated timelines are provided based on scope\n• Delays may occur due to client-side delays (content, approvals, feedback) or scope changes\n• We are not liable for delays outside our control",
+          },
+          {
+            title: "7. Client Responsibilities",
+            content:
+              "You agree to:\n• Provide accurate project requirements\n• Share necessary content, assets, and feedback on time\n• Review and approve deliverables promptly",
+          },
+          {
+            title: "8. Intellectual Property",
+            content:
+              "• Final deliverables are transferred to the client only after full payment\n• Until then, all work remains the property of Wavyfy\n• We reserve the right to showcase completed work in our portfolio",
+          },
+          {
+            title: "9. Third-Party Services",
+            content:
+              "• We may integrate third-party tools (hosting, APIs, plugins, etc.)\n• We are not responsible for their performance, pricing, or policy changes\n• Any associated costs are the client’s responsibility",
+          },
+          {
+            title: "10. Limitation of Liability",
+            content:
+              "We are not liable for:\n• Indirect or consequential losses\n• Business losses, revenue loss, or downtime\n• Issues caused by third-party services",
+          },
+          {
+            title: "11. Termination",
+            content:
+              "We reserve the right to terminate or pause services if terms are violated, payments are delayed, or communication breaks down.",
+          },
+          {
+            title: "12. Confidentiality",
+            content:
+              "We respect client confidentiality and will not share sensitive project information without consent.",
+          },
+          {
+            title: "13. Changes to Terms",
+            content:
+              "We may update these terms at any time. Continued use of our services implies acceptance of updated terms.",
+          },
+          {
+            title: "14. Governing Law",
+            content:
+              "These terms are governed by the laws of India, with jurisdiction in Bhopal, Madhya Pradesh.",
+          },
+          {
+            title: "15. Contact",
+            content: "For any questions: hello@wavyfy.com",
+          },
+        ],
+      },
+      "Refund Policy": {
+        effectiveDate: "April 26, 2026",
+        lastUpdated: "April 26, 2026",
+        sections: [
+          {
+            title: "1. Overview",
+            content:
+              "At Wavyfy, all services are project-based and tailored to specific client requirements. Due to the nature of digital work, refunds are limited and subject to the conditions below.",
+          },
+          {
+            title: "2. No Full Refund After Work Starts",
+            content:
+              "Once a project has started and resources have been allocated, no full refunds will be issued.",
+          },
+          {
+            title: "3. Advance Payments",
+            content:
+              "• Advance or booking payments are non-refundable\n• This secures project scheduling, planning, and initial work",
+          },
+          {
+            title: "4. Partial Refunds (If Applicable)",
+            content:
+              "A partial refund may be considered only if:\n• Work has not significantly progressed\n• The request is made early in the project\n\nAny refund will be calculated based on work completed and resources used.",
+          },
+          {
+            title: "5. Project Cancellation",
+            content:
+              "If you choose to cancel:\n• You will be billed for work completed up to that point\n• Any remaining amount (if applicable) may be adjusted, not guaranteed refunded",
+          },
+          {
+            title: "6. Delays or Client Inactivity",
+            content:
+              "No refunds will be issued if delays are caused by:\n• Lack of communication\n• Missing content or approvals\n• Extended inactivity from the client side",
+          },
+          {
+            title: "7. Dissatisfaction",
+            content:
+              "We prioritize quality and communication. If you're not satisfied:\n• We will first attempt revisions and improvements\n• Refunds are not guaranteed based on subjective dissatisfaction",
+          },
+          {
+            title: "8. Third-Party Costs",
+            content:
+              "Payments made for third-party services (domains, hosting, APIs, tools, etc.) are non-refundable.",
+          },
+          {
+            title: "9. Payment Disputes",
+            content:
+              "Initiating a chargeback without contacting us first may result in:\n• Immediate termination of services\n• Suspension of deliverables",
+          },
+          {
+            title: "10. Contact",
+            content: "For refund-related queries: hello@wavyfy.com",
+          },
+        ],
+      },
+    },
     copyright: "Wavyfy India.",
     allRightsReserved: "All rights reserved.",
+  },
+
+  common: {
+    status: "Open to Work",
+  },
+
+  cta: {
+    bookCall: "Book A Call",
+    stillAnalyzing: "Still analyzing?",
+    defaultCard: {
+      line1: "You command ",
+      line2: "the market.",
+      line3: "We engineer the systems ",
+      highlight: "that make it possible.",
+    },
+  },
+
+  contact: {
+    title: "Let’s Talk",
+    subtitle: "With Clarity",
+    description: "Tell us what you need. We’ll take it forward.",
+    emailCard: {
+      title: "Email Us",
+      description:
+        "Feel free to email me if you have any questions or need more details!",
+      email: "hello@wavyfy.com",
+    },
+    callCard: {
+      title: "Prefer to Call ?",
+      description:
+        "Feel free to book a call if that's more convenient and easier for you",
+      linkText: "(+91) 9288 670 204",
+      href: "https://wa.me/919288670204",
+    },
+    form: {
+      title: "I'd love to help! Let me know how",
+      fields: {
+        name: "Full Name",
+        email: "Email Address",
+        subject: "Subject Of Interest",
+        message: "How may we assist you?",
+      },
+      placeholders: {
+        name: "Abhinav Sharma",
+        email: "abc@gmail.com",
+        subject: "Regarding Project",
+        message: "Give us more info..",
+      },
+      submitText: "Send Your Message",
+    },
   },
 };

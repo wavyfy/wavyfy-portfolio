@@ -16,6 +16,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 section {
@@ -23,6 +24,6 @@ section {
 }
 
 ::selection {
-  background-color: #0B1220;
+  background-color: #0b1220;
   color: white;
 }

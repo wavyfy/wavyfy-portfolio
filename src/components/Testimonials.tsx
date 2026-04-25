@@ -1,6 +1,6 @@
 "use client";
 import DarkCTACard from "./DarkCTACard";
-import Image from "next/image";
+import { PersonIcon } from "@radix-ui/react-icons";
 import { QuoteIcon, StarFilledIcon } from "@radix-ui/react-icons";
 import StatusBadge from "./StatusBadge";
 import { Reveal } from "./Reveal";
@@ -23,14 +23,9 @@ const TestimonialCard = ({
   >
     <div className="flex items-center justify-between mb-8">
       <div className="flex items-center gap-3">
-        <Image
-          src={testimonial.avatar}
-          alt={testimonial.author}
-          width={48}
-          height={48}
-          sizes="48px"
-          className="rounded-full object-cover"
-        />
+        <div className="border border-gray-200 p-2 bg-gray-200 rounded-full">
+          <PersonIcon className="w-7 h-7 text-gray-500" />
+        </div>
         <div suppressHydrationWarning>
           <h4 className="text-sm font-semibold text-gray-900">
             {testimonial.author}
@@ -69,7 +64,9 @@ export default function Testimonials() {
               <StatusBadge dotColor="bg-red-500" title="Testimonials" />
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-[2.3rem] font-semibold leading-[1.2] tracking-tight">
-              <span className="text-gray-900">{content.testimonials.title}</span>
+              <span className="text-gray-900">
+                {content.testimonials.title}
+              </span>
               <br />
               <span className="text-gray-500">
                 {content.testimonials.subtitle}
