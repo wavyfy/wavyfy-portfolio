@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick =
-    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    (id: string) => (e: React.MouseEvent) => {
       e.preventDefault();
 
       const el = document.getElementById(id);
@@ -36,6 +36,16 @@ export default function Navbar() {
       window.addEventListener("scroll", handleScroll);
     };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (window.scrollY === 0) {
+      window.location.reload();
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <>
       <nav className="sticky top-0 z-50 w-full pt-2 max-w-360 mx-auto">
@@ -52,20 +62,30 @@ export default function Navbar() {
           {/* Top Bar - always visible */}
           <div className="flex w-full items-center justify-between px-2 py-1">
             {/* Logo */}
-            <div className="flex items-center gap-1.5 pl-2">
-              <Image
-                src="/logo-icon.png"
+            <a
+              href="#"
+              onClick={handleLogoClick}
+              className="flex items-center gap-1.5 pl-2 cursor-pointer"
+            >
+              {/* <Image
+                src="/favicon.png"
                 alt={content.navbar.logo}
                 width={48}
                 height={48}
                 sizes="38px"
                 priority
-                className="h-12 w-auto"
+                className="h-auto w-auto"
+              /> */}
+                 <Image
+                src="/logo-text.png"
+                alt={content.navbar.logo}
+                width={100}
+                height={100}
+                sizes="75px"
+                priority
+                className="h-auto w-auto pt-1"
               />
-              <p className="text-xl font-semibold tracking-tight text-gray-900">
-                {content.navbar.logo}
-              </p>
-            </div>
+            </a>
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
@@ -151,6 +171,7 @@ export default function Navbar() {
                   <div className="mt-4">
                     <BookCallButton
                       text={content.navbar.cta}
+                      onClick={handleNavClick("contact")}
                       className="w-full bg-[#080d17] rounded-[24px] p-[6px] pl-[20px] flex items-center justify-between text-white group hover:bg-[#111A2B] transition-colors shadow-lg shadow-black/10"
                       iconContainerClassName="w-[54px] h-[46px] rounded-[18px] bg-[#222938] group-hover:bg-[#2A3346] transition-colors"
                       iconClassName="w-5 h-5 text-gray-300 group-hover:translate-x-1 transition-transform"

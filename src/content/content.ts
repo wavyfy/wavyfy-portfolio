@@ -17,9 +17,9 @@ export const content = {
     logo: "Wavyfy",
     links: [
       { label: "Services", id: "services" },
-      { label: "Projects", id: "projects" },
       { label: "Our Clients", id: "testimonials" },
       { label: "Process", id: "process" },
+      { label: "FAQ", id: "faq" },
     ] as NavLink[],
     cta: "Book A Call",
   },
@@ -95,16 +95,16 @@ export const content = {
     subtitle: "We can build for you",
     slides: [
       {
-        src: "/Screenshot 2026-04-26 011032.png",
+        src: "/Showcase 1.png",
         alt: "Bella Exotica e-commerce landing page design for premium organic cereals and nuts",
       },
       {
-        src: "/Screenshot 2026-04-26 011302.png",
-        alt: "BIBA fashion e-commerce website design showcasing new arrivals and collections",
+        src: "/Showcase 2.png",
+        alt: "Samsung Galaxy Ring product launch page design with 3D product rendering",
       },
       {
-        src: "/Screenshot 2026-04-26 011510.png",
-        alt: "Samsung Galaxy Ring product launch page design with 3D product rendering",
+        src: "/Showcase 3.png",
+        alt: "BIBA fashion e-commerce website design showcasing new arrivals and collections",
       },
     ] as ShowcaseSlide[],
   },
@@ -344,6 +344,41 @@ export const content = {
           "We communicate via WhatsApp, Slack, or email with regular updates and checkpoints.",
       },
     ] as FAQItem[],
+  },
+
+  contact: {
+    title: "Let’s Talk",
+    subtitle: "With Clarity",
+    description: "Tell us what you need. We’ll take it forward.",
+    emailCard: {
+      title: "Email Us",
+      description:
+        "Feel free to email me if you have any questions or need more details!",
+      email: "hello@wavyfy.com",
+    },
+    callCard: {
+      title: "Prefer to Call ?",
+      description:
+        "Feel free to book a call if that's more convenient and easier for you",
+      linkText: "(+91) 9288 670 204",
+      href: "https://wa.me/919288670204",
+    },
+    form: {
+      title: "I'd love to help! Let me know how",
+      fields: {
+        name: "Full Name",
+        email: "Email Address",
+        subject: "Subject Of Interest",
+        message: "How may we assist you?",
+      },
+      placeholders: {
+        name: "Abhinav Sharma",
+        email: "abc@gmail.com",
+        subject: "Regarding Project",
+        message: "Give us more info..",
+      },
+      submitText: "Send Your Message",
+    },
   },
 
   footer: {
@@ -637,41 +672,6 @@ export const content = {
       line2: "the market.",
       line3: "We engineer the systems ",
       highlight: "that make it possible.",
-    },
-  },
-
-  contact: {
-    title: "Let’s Talk",
-    subtitle: "With Clarity",
-    description: "Tell us what you need. We’ll take it forward.",
-    emailCard: {
-      title: "Email Us",
-      description:
-        "Feel free to email me if you have any questions or need more details!",
-      email: "hello@wavyfy.com",
-    },
-    callCard: {
-      title: "Prefer to Call ?",
-      description:
-        "Feel free to book a call if that's more convenient and easier for you",
-      linkText: "(+91) 9288 670 204",
-      href: "https://wa.me/919288670204",
-    },
-    form: {
-      title: "I'd love to help! Let me know how",
-      fields: {
-        name: "Full Name",
-        email: "Email Address",
-        subject: "Subject Of Interest",
-        message: "How may we assist you?",
-      },
-      placeholders: {
-        name: "Abhinav Sharma",
-        email: "abc@gmail.com",
-        subject: "Regarding Project",
-        message: "Give us more info..",
-      },
-      submitText: "Send Your Message",
     },
   },
 };

@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   category: "technology",
 
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/logo-icon.png",
+    apple: "/logo-icon.png",
   },
 
   alternates: {
@@ -95,7 +95,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased scroll-smooth`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} antialiased scroll-smooth`}
+      suppressHydrationWarning
+    >
       <body className="min-h-screen" suppressHydrationWarning>
         <JsonLd />
         <SmoothScroll>{children}</SmoothScroll>

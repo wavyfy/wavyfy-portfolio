@@ -23,7 +23,7 @@ export default function BookCallButton({
 }: BookCallButtonProps) {
   const isLink = href && type !== "submit";
   const Tag = isLink ? "a" : "button";
-  const props = isLink ? { href } : { onClick, type };
+  const props = isLink ? { href, onClick } : { onClick, type };
 
   return (
     <Tag

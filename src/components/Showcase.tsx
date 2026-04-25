@@ -59,10 +59,10 @@ export default function ShowcaseSection() {
                       src={src}
                       alt={alt}
                       fill
-                      sizes="700px"
-                      quality={100}
+                      sizes="(max-width: 768px) 100vw, 700px"
+                      quality={75}
                       priority={i === 0}
-                      className="object-contain rounded-xl opacity-100 transition-transform duration-700 group-hover:opacity-100 [image-rendering:-webkit-optimize-contrast]"
+                      className="object-cover"
                     />
                   </div>
                 </div>
