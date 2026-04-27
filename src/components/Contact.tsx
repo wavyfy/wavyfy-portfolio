@@ -1,6 +1,7 @@
 "use client";
 
-// import { Mail, Mobile, Headset } from "radix-icons";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import StatusBadge from "./StatusBadge";
 import { Reveal } from "./Reveal";
 import BookCallButton from "./BookCallButton";
@@ -11,6 +12,46 @@ import DarkCTACard from "./DarkCTACard";
 
 export default function Contact() {
   const c = content.contact;
+  const [result, setResult] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setIsLoading(true);
+    setResult("");
+    setIsSuccess(false);
+    setIsError(false);
+    const formData = new FormData(form);
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message sent successfully!");
+        setIsSuccess(true);
+        form.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message || "Failed to send message.");
+        setIsError(true);
+      }
+    } catch (error) {
+      console.log("Error", error);
+      setResult("Something went wrong!");
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section
@@ -104,7 +145,15 @@ export default function Contact() {
 
             {/* Right Column: Form Card (swapped to left on lg) */}
             <div className="bg-white border rounded-[32px] border-gray-200 shadow-sm p-8 md:p-10 flex flex-col h-full w-full order-2 lg:order-1">
-              <form className="flex flex-col gap-5 flex-1">
+              <form onSubmit={onSubmit} className="flex flex-col gap-5 flex-1">
+                {/* Honeypot Spam Protection */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                />
+
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="name"
@@ -114,6 +163,7 @@ export default function Contact() {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     id="name"
                     placeholder={c.form.placeholders.name}
                     className="w-full bg-[#f8f9fa] border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0b1015] focus:bg-white transition-all"
@@ -130,6 +180,7 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     id="email"
                     placeholder={c.form.placeholders.email}
                     className="w-full bg-[#f8f9fa] border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0b1015] focus:bg-white transition-all"
@@ -146,6 +197,7 @@ export default function Contact() {
                   </label>
                   <input
                     type="text"
+                    name="subject"
                     id="subject"
                     placeholder={c.form.placeholders.subject}
                     className="w-full bg-[#f8f9fa] border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0b1015] focus:bg-white transition-all"
@@ -161,6 +213,7 @@ export default function Contact() {
                     {c.form.fields.message}
                   </label>
                   <textarea
+                    name="message"
                     id="message"
                     placeholder={c.form.placeholders.message}
                     rows={4}
@@ -171,11 +224,38 @@ export default function Contact() {
 
                 <div className="mt-2 w-full">
                   <BookCallButton
+                    type="submit"
                     text={c.form.submitText}
-                    className="w-full flex items-center justify-between gap-4 bg-[#0b1015] text-white text-sm font-medium pl-6 pr-2 py-2 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-transform"
+                    className={`w-full flex items-center justify-between gap-4 bg-[#0b1015] text-white text-sm font-medium pl-6 pr-2 py-2 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-transform ${
+                      isLoading ? "opacity-70 pointer-events-none" : ""
+                    }`}
                     iconContainerClassName="w-12 h-10 rounded-lg bg-[#1b2025]"
                     iconClassName="w-5 h-5 text-white"
                   />
+                  <div className="h-6 mt-4">
+                    <AnimatePresence mode="wait">
+                      {(isLoading || result) && (
+                        <motion.p
+                          key={isLoading ? "loading" : "result"}
+                          initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                          exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                          transition={{ duration: 0.3 }}
+                          className={`text-center text-sm font-medium ${
+                            isLoading
+                              ? "text-gray-500"
+                              : isSuccess
+                                ? "text-green-600"
+                                : isError
+                                  ? "text-red-600"
+                                  : "text-gray-600"
+                          }`}
+                        >
+                          {isLoading ? "Sending message..." : result}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </form>
             </div>
