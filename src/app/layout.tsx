@@ -16,26 +16,27 @@ const SITE_URL = "https://www.wavyfy.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
+  applicationName: "Wavyfy",
+  referrer: "origin-when-cross-origin",
+
   title: {
-    default: "Wavyfy - Web Design, SaaS Development & Brand Strategy",
+    default: "Wavyfy - SaaS Development, Shopify & Web Apps for Startups",
     template: "%s | Wavyfy",
   },
 
   description:
-    "Wavyfy is a web design and development agency. We build conversion-driven websites, Next.js SaaS platforms, and brand identities that attract, engage, and scale.",
-
+    "Wavyfy builds SaaS apps, Shopify stores, and custom websites for startups. End-to-end design, development, and deployment—fast and scalable.",
   keywords: [
-    "web design agency",
-    "SaaS development",
-    "Next.js development",
-    "brand identity design",
-    "UI/UX design",
-    "conversion rate optimization",
-    "landing page design",
-    "React development",
-    "Framer design",
-    "digital product studio",
-    "Wavyfy",
+    "saas development agency",
+    "saas app development for startups",
+    "startup web development agency",
+    "shopify development for startups",
+    "custom web app development",
+    "next js saas development",
+    "web development agency for startups",
+    "build saas product",
+    "startup website development",
+    "wavyfy",
   ],
 
   authors: [{ name: "Wavyfy", url: SITE_URL }],
@@ -55,15 +56,15 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Wavyfy",
-    title: "Wavyfy — Web Design, SaaS Development & Brand Strategy",
+    title: "Wavyfy - SaaS Development, Shopify & Web Apps for Startups",
     description:
-      "We build conversion-driven websites, Next.js SaaS platforms, and brand identities. Let's build something remarkable together.",
+      "Wavyfy builds SaaS apps, Shopify stores, and custom websites for startups. End-to-end design, development, and deployment—fast and scalable.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Wavyfy — Web Design, SaaS Development & Brand Strategy",
+        alt: "Wavyfy - SaaS, Shopify & Web Development",
       },
     ],
     locale: "en_US",
@@ -71,9 +72,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Wavyfy — Web Design, SaaS Development & Brand Strategy",
+    title: "Wavyfy - SaaS Development, Shopify & Web Apps for Startups",
     description:
-      "We build conversion-driven websites, Next.js SaaS platforms, and brand identities. Let's build something remarkable together.",
+      "We build SaaS applications, Shopify stores, and custom websites for startups. End-to-end and scalable.",
     images: ["/og-image.png"],
     creator: "@wavyfy",
   },
