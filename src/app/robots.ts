@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://wavyfy.com/sitemap.xml",
+    sitemap: "https://www.wavyfy.com/sitemap.xml",
   };
 }
