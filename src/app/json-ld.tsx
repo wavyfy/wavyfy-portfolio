@@ -8,8 +8,8 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Wavyfy",
-    url: "https://wavyfy.com",
-    logo: "https://wavyfy.com/logo-icon.png",
+    url: "https://www.wavyfy.com",
+    logo: "https://www.wavyfy.com/logo-icon.png",
     description:
       "Wavyfy is a web design and development agency specializing in Next.js, SaaS platforms, brand identity, and conversion-driven digital products.",
     sameAs: [],
@@ -50,12 +50,12 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Wavyfy",
-    url: "https://wavyfy.com",
+    url: "https://www.wavyfy.com",
     description:
       "Web design and SaaS development agency. We build conversion-driven websites, platforms, and brand identities.",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://wavyfy.com",
+      target: "https://www.wavyfy.com",
     },
   };
 

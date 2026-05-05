@@ -11,7 +11,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://wavyfy.com";
+const SITE_URL = "https://www.wavyfy.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
